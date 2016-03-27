@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="BLACK_A100">#FF000000</color>
+    <color name="BLACK_A95">#F2000000</color>
+    <color name="BLACK_A90">#E6000000</color>
+    <color name="BLACK_A85">#D9000000</color>
+    <color name="BLACK_A80">#CC000000</color>
+    <color name="BLACK_A75">#BF000000</color>
+    <color name="BLACK_A70">#B3000000</color>
+    <color name="BLACK_A65">#A6000000</color>
+    <color name="BLACK_A60">#99000000</color>
+    <color name="BLACK_A55">#8C000000</color>
+    <color name="BLACK_A50">#80000000</color>
+    <color name="BLACK_A45">#73000000</color>
+    <color name="BLACK_A40">#66000000</color>
+    <color name="BLACK_A35">#59000000</color>
+    <color name="BLACK_A30">#4D000000</color>
+    <color name="BLACK_A25">#40000000</color>
+    <color name="BLACK_A20">#33000000</color>
+    <color name="BLACK_A15">#26000000</color>
+    <color name="BLACK_A10">#1A000000</color>
+    <color name="BLACK_A5">#0D000000</color>
+    <color name="BLACK_A0">#00000000</color>
+</resources>

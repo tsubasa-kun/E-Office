@@ -1,0 +1,6 @@
+*.iml
+.idea
+.gradle
+/local.properties
+/app/build
+/cookie-library/build
