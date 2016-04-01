@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
+    <!-- 一般网络色 V1.0-->
+    <!-- Created by Xiekun on 2016.03.31 -->
+    <!-- Resources http://blog.sina.com.cn/s/blog_4e60b09d01015jcp.html-->
     <color name="white">#FFFFFF</color><!--白色 -->
     <color name="ivory">#FFFFF0</color><!--象牙色 -->
     <color name="lightyellow">#FFFFE0</color><!--亮黄色-->
@@ -144,6 +147,4 @@
     <color name="darkblue">#00008B</color><!--暗蓝色 -->
     <color name="navy">#000080</color><!--海军色 -->
     <color name="black">#000000</color><!--黑色 -->
-    <color name="mygreen">#43CD80</color>
-    <color name="myyello">#FFFF64</color>
 </resources>

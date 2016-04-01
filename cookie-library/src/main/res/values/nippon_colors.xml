@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- 日本の伝統色 V1.0-->
-    <!-- Created by Xiekun on 2015.09.10 -->
+    <!-- Created by Xiekun on 2015.03.31 -->
+    <!-- Resources http://nipponcolors.com-->
     <color name="NADESHIKO">#DC9FB4</color><!-- 撫子 -->
     <color name="KOHBAI">#E16B8C</color><!-- 紅梅 -->
     <color name="SUOH">#8E354A</color><!-- 蘇芳 -->
@@ -188,7 +189,6 @@
     <color name="AINEZUMI">#566C73</color><!-- 藍鼠 -->
     <color name="MASUHANA">#577C8A</color><!-- 舛花 -->
     <color name="SORA">#58B2DC</color><!-- 空 -->
-    <color name="SORA_A60">#9958B2DC</color>
     <color name="NOSHIMEHANA">#2B5F75</color><!-- 熨斗目花 -->
     <color name="CHIGUSA">#3A8FB7</color><!-- 千草 -->
     <color name="OMESHIONANDO">#2E5C6E</color><!-- 御召御納戸 -->

@@ -1,5 +1,6 @@
 package com.love_cookies.cookie_library.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,7 +18,41 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     private boolean injected = false;
 
-    public abstract void widgetClick(View v);
+    /**
+     * 初始化控件和事件
+     * @param savedInstanceState
+     */
+    public abstract void initWidget(Bundle savedInstanceState);
+
+    /**
+     * 控件的点击事件
+     * @param view
+     */
+    public abstract void widgetClick(View view);
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (!injected) {
+            x.view().inject(this, this.getView());
+        }
+        initWidget(savedInstanceState);
+    }
+
+    @Override
+    public void onClick(View v) {
+        widgetClick(v);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -26,11 +61,33 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        if (!injected) {
-            x.view().inject(this, this.getView());
-        }
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 
     @Override
@@ -43,9 +100,5 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         super.onDetach();
     }
 
-    @Override
-    public void onClick(View v) {
-        widgetClick(v);
-    }
 
 }

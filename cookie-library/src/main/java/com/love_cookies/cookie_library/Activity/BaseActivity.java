@@ -1,12 +1,11 @@
 package com.love_cookies.cookie_library.Activity;
 
-import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
 
-import com.love_cookies.cookie_library.Utils.ActivityManager;
+import com.love_cookies.cookie_library.Application.ActivityCollections;
 
 import org.xutils.x;
 
@@ -15,18 +14,19 @@ import org.xutils.x;
  *
  * Activity基类
  */
-public abstract class BaseActivity extends Activity implements View.OnClickListener {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // 是否允许全屏
-    private boolean mAllowFullScreen = true;
+    /**
+     * 初始化控件和事件
+     * @param savedInstanceState
+     */
+    public abstract void initWidget(Bundle savedInstanceState);
 
-//    public abstract void initWidget();
-
-    public abstract void widgetClick(View v);
-
-    public void setAllowFullScreen(boolean allowFullScreen) {
-        this.mAllowFullScreen = allowFullScreen;
-    }
+    /**
+     * 控件的点击事件
+     * @param view
+     */
+    public abstract void widgetClick(View view);
 
     @Override
     public void onClick(View v) {
@@ -37,11 +37,14 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);// 竖屏锁定
-        if (mAllowFullScreen) {
-            requestWindowFeature(Window.FEATURE_NO_TITLE); // 取消标题
-        }
+        ActivityCollections.getInstance().addActivity(this);
         x.view().inject(this);
-//        initWidget();
+        initWidget(savedInstanceState);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
     }
 
     @Override
@@ -55,23 +58,18 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
     protected void onPause() {
         super.onPause();
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onStop() {
+        super.onStop();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityManager.removeActivity(this);
+        ActivityCollections.getInstance().finishActivity(this);
     }
 }

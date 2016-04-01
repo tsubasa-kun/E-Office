@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- 透明度色 V1.0-->
+    <!-- Created by Xiekun on 2016.03.31 -->
     <color name="BLACK_A100">#FF000000</color>
     <color name="BLACK_A95">#F2000000</color>
     <color name="BLACK_A90">#E6000000</color>

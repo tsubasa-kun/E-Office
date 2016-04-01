@@ -1,15 +1,15 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/SORA</item>
+        <item name="colorPrimaryDark">@color/SORA</item>
+        <item name="colorAccent">@color/SORA</item>
     </style>
 
-    <!-- Activity滑动切换 -->
-    <style name="SlideStyle" parent="AppTheme">
+    <!-- Activity滑动切换主题（类似IOS） -->
+    <style name="CookieTheme" parent="BaseAppTheme">
         <item name="android:windowAnimationStyle">@style/Enter_Animations</item>
     </style>
     <style name="Enter_Animations" parent="@android:style/Animation.Activity">
@@ -22,6 +22,14 @@
     <!-- 进度条 -->
     <style name="customProgressBar" parent="@android:style/Widget.ProgressBar.Small">
         <item name="android:indeterminateDrawable">@drawable/custom_progress_bar</item>
+        <item name="android:layout_width">21dip</item>
+        <item name="android:layout_height">21dip</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!-- 彩色进度条 -->
+    <style name="colorfulProgressBar" parent="@android:style/Widget.ProgressBar.Small">
+        <item name="android:indeterminateDrawable">@drawable/colorful_progress_bar</item>
         <item name="android:layout_width">21dip</item>
         <item name="android:layout_height">21dip</item>
         <item name="android:layout_gravity">center</item>
