@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/CookieTheme"
         android:name=".E_OfficeApplication">
+
+        <meta-data android:name="design_width" android:value="1080" />
+        <meta-data android:name="design_height" android:value="1920" />
+
         <activity android:name=".View.Activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
