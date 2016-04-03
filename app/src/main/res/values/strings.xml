@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">E-Office</string>
+    <string name="app_intro"></string>
+    <string name="app_right">love-cookies\nCopyright © 2016 XIEKUN .All Rights Reserved</string>
 </resources>
