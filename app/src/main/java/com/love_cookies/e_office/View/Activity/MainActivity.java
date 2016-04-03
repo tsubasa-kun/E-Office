@@ -1,15 +1,23 @@
 package com.love_cookies.e_office.View.Activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
+import com.love_cookies.cookie_library.Activity.BaseActivity;
 import com.love_cookies.e_office.R;
 
-public class MainActivity extends AppCompatActivity {
+import org.xutils.view.annotation.ContentView;
+
+@ContentView(R.layout.activity_main)
+public class MainActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void initWidget(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void widgetClick(View view) {
+
     }
 }
