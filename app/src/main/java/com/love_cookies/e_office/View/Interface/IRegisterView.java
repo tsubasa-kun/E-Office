@@ -8,5 +8,5 @@ package com.love_cookies.e_office.View.Interface;
 public interface IRegisterView {
     void doRegister();
     void turnToLogin();
-    void registerFailed();
+    void registerFailed(String msg);
 }

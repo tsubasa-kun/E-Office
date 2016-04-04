@@ -87,8 +87,8 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
     }
 
     @Override
-    public void registerFailed() {
+    public void registerFailed(String msg) {
         ProgressUtils.hideProgress();
-        ToastUtils.show(this, R.string.register_failed_text);
+        ToastUtils.show(this, msg);
     }
 }

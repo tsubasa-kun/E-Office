@@ -28,7 +28,7 @@ public class RegisterPresenter {
 
             @Override
             public void getFailed(Object msg) {
-                iRegisterView.registerFailed();
+                iRegisterView.registerFailed((String)msg);
             }
         });
     }
