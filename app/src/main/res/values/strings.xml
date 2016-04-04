@@ -3,6 +3,18 @@
     <string name="app_intro"></string>
     <string name="app_right">love-cookies\nCopyright © 2016 XIEKUN .All Rights Reserved</string>
 
+    <string name="wait_text">请稍后...</string>
+
     <string name="login_title">登录</string>
     <string name="register_title">注册</string>
+    <string name="username_text">账户：</string>
+    <string name="username_text_hint">请输入账户</string>
+    <string name="password_text">密码：</string>
+    <string name="password_text_hint">请输入密码</string>
+    <string name="nickname_text">昵称：</string>
+    <string name="nickname_text_hint">请输入昵称</string>
+    <string name="login_btn_text">登录</string>
+    <string name="register_btn_text">注册</string>
+    <string name="register_success_text">注册成功，现在你可以登录啦</string>
+    <string name="register_failed_text">注册失败</string>
 </resources>
