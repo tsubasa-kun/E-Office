@@ -1,5 +1,6 @@
 package com.love_cookies.cookie_library.Activity;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -72,4 +73,82 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         super.onDestroy();
         ActivityCollections.getInstance().finishActivity(this);
     }
+
+    /**
+     * 跳转另一个活动
+     *
+     * @param clazz
+     */
+    protected void turn(Class<?> clazz) {
+        Intent intent = new Intent(this, clazz);
+        startActivity(intent);
+    }
+
+
+    /**
+     * 跳转另一个活动并传递参数
+     *
+     * @param clazz
+     * @param bundle
+     */
+    protected void turn(Class<?> clazz, Bundle bundle) {
+        Intent intent = new Intent(this, clazz);
+        if (null != bundle) {
+            intent.putExtras(bundle);
+        }
+        startActivity(intent);
+    }
+
+    /**
+     * 跳转另一个活动并结束当前
+     *
+     * @param clazz
+     */
+    protected void turnThenFinish(Class<?> clazz) {
+        Intent intent = new Intent(this, clazz);
+        startActivity(intent);
+        finish();
+    }
+
+    /**
+     * 跳转另一个活动并结束，并传递参数
+     *
+     * @param clazz
+     * @param bundle
+     */
+    protected void turnThenFinish(Class<?> clazz, Bundle bundle) {
+        Intent intent = new Intent(this, clazz);
+        if (null != bundle) {
+            intent.putExtras(bundle);
+        }
+        startActivity(intent);
+        finish();
+    }
+
+    /**
+     * 开始一个活动，并等待返回结果
+     *
+     * @param clazz
+     * @param requestCode
+     */
+    protected void turnForResult(Class<?> clazz, int requestCode) {
+        Intent intent = new Intent(this, clazz);
+        startActivityForResult(intent, requestCode);
+    }
+
+    /**
+     * 开始一个活动，并等待返回结果，并传递参数
+     *
+     * @param clazz
+     * @param requestCode
+     * @param bundle
+     */
+    protected void turnForResult(Class<?> clazz, int requestCode, Bundle bundle) {
+        Intent intent = new Intent(this, clazz);
+        if (null != bundle) {
+            intent.putExtras(bundle);
+        }
+        startActivityForResult(intent, requestCode);
+    }
+
 }

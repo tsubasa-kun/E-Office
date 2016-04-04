@@ -1,6 +1,5 @@
 package com.love_cookies.e_office.View.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -27,9 +26,7 @@ public class SplashActivity extends BaseActivity {
 	Runnable runnable = new Runnable() {
 		@Override
 		public void run() {
-			Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-			startActivity(intent);
-			finish();
+			turnThenFinish(MainActivity.class);
 		}
 	};
 
