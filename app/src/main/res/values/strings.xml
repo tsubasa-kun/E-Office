@@ -2,4 +2,6 @@
     <string name="app_name">e办公</string>
     <string name="app_intro"></string>
     <string name="app_right">love-cookies\nCopyright © 2016 XIEKUN .All Rights Reserved</string>
+
+    <string name="login_title">登录</string>
 </resources>

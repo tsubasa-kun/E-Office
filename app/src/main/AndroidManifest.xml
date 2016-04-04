@@ -6,15 +6,18 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".E_OfficeApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/CookieTheme"
-        android:name=".E_OfficeApplication">
-
-        <meta-data android:name="design_width" android:value="1080" />
-        <meta-data android:name="design_height" android:value="1920" />
+        android:theme="@style/CookieTheme">
+        <meta-data
+            android:name="design_width"
+            android:value="1080" />
+        <meta-data
+            android:name="design_height"
+            android:value="1920" />
 
         <activity android:name=".View.Activity.SplashActivity">
             <intent-filter>
@@ -23,8 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".View.Activity.MainActivity" />
+        <activity android:name=".View.Activity.LoginActivity" />
     </application>
 
 </manifest>

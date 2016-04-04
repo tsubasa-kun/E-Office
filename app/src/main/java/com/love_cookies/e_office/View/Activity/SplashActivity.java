@@ -26,7 +26,7 @@ public class SplashActivity extends BaseActivity {
 	Runnable runnable = new Runnable() {
 		@Override
 		public void run() {
-			turnThenFinish(MainActivity.class);
+			turnThenFinish(LoginActivity.class);
 		}
 	};
 
