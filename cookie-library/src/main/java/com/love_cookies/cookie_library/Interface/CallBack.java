@@ -6,6 +6,6 @@ package com.love_cookies.cookie_library.Interface;
  * 回调
  */
 public interface CallBack {
-    void getSuccess(Object result);
-    void getFailed(Object msg);
+    void onSuccess(Object result);
+    void onFailed(Object msg);
 }

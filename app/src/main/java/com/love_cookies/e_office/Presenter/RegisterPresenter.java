@@ -22,12 +22,12 @@ public class RegisterPresenter {
     public void doRegister(String username, String password, String nickname) {
         registerBiz.doRegister(username, password, nickname, new CallBack() {
             @Override
-            public void getSuccess(Object result) {
+            public void onSuccess(Object result) {
                 iRegisterView.turnToLogin();
             }
 
             @Override
-            public void getFailed(Object msg) {
+            public void onFailed(Object msg) {
                 iRegisterView.registerFailed((String)msg);
             }
         });

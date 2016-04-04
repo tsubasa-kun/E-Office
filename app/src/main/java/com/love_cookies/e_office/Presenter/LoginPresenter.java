@@ -22,12 +22,12 @@ public class LoginPresenter {
     public void doLogin(String username, String password) {
         loginBiz.doLogin(username, password, new CallBack() {
             @Override
-            public void getSuccess(Object result) {
+            public void onSuccess(Object result) {
                 iLoginView.turnToMain();
             }
 
             @Override
-            public void getFailed(Object msg) {
+            public void onFailed(Object msg) {
                 iLoginView.loginFailed((String)msg);
             }
         });

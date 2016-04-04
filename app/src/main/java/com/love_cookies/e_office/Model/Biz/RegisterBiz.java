@@ -22,12 +22,12 @@ public class RegisterBiz implements IRegisterBiz {
         userBean.signUp(ActivityCollections.getInstance().currentActivity(), new SaveListener() {
             @Override
             public void onSuccess() {
-                callBack.getSuccess(userBean);
+                callBack.onSuccess(userBean);
             }
 
             @Override
             public void onFailure(int i, String s) {
-                callBack.getFailed(s);
+                callBack.onFailed(s);
             }
         });
     }
