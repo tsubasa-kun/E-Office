@@ -1,11 +1,15 @@
 package com.love_cookies.e_office.View.Activity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.love_cookies.cookie_library.Activity.BaseActivity;
+import com.love_cookies.cookie_library.Utils.ProgressUtils;
+import com.love_cookies.cookie_library.Utils.ToastUtils;
+import com.love_cookies.e_office.Presenter.LoginPresenter;
 import com.love_cookies.e_office.R;
 import com.love_cookies.e_office.View.Interface.ILoginView;
 
@@ -31,6 +35,8 @@ public class LoginActivity extends BaseActivity implements ILoginView{
     @ViewInject(R.id.register_btn)
     TextView registerBtn;
 
+    LoginPresenter loginPresenter = new LoginPresenter(this);
+
     @Override
     public void initWidget(Bundle savedInstanceState) {
         titleTV.setText(R.string.login_title);
@@ -54,17 +60,28 @@ public class LoginActivity extends BaseActivity implements ILoginView{
 
     @Override
     public void doLogin() {
-
+        String username = usernameET.getText().toString();
+        String password = passwordET.getText().toString();
+        if (TextUtils.isEmpty(username)) {
+            ToastUtils.show(this, R.string.username_text_hint);
+        } else if (TextUtils.isEmpty(password)) {
+            ToastUtils.show(this, R.string.password_text_hint);
+        } else {
+            ProgressUtils.showProgress(this, R.string.wait_text);
+            loginPresenter.doLogin(username, password);
+        }
     }
 
     @Override
     public void turnToMain() {
+        ProgressUtils.hideProgress();
         turnThenFinish(MainActivity.class);
     }
 
     @Override
-    public void loginFailed() {
-
+    public void loginFailed(String msg) {
+        ProgressUtils.hideProgress();
+        ToastUtils.show(this, msg);
     }
 
     @Override

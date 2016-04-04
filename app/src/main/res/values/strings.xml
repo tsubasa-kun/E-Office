@@ -17,4 +17,5 @@
     <string name="register_btn_text">注册</string>
     <string name="register_success_text">注册成功，现在你可以登录啦</string>
     <string name="register_failed_text">注册失败</string>
+    <string name="login_failed_text">登录失败</string>
 </resources>

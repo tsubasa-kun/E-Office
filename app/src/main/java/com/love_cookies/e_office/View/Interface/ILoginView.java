@@ -8,6 +8,6 @@ package com.love_cookies.e_office.View.Interface;
 public interface ILoginView {
     void doLogin();
     void turnToMain();
-    void loginFailed();
+    void loginFailed(String msg);
     void autoLogin();
 }
