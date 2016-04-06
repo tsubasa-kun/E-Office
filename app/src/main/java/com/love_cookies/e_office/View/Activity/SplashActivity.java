@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.love_cookies.cookie_library.Activity.BaseActivity;
 import com.love_cookies.e_office.R;
 
+import org.xutils.image.ImageOptions;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -38,7 +39,7 @@ public class SplashActivity extends BaseActivity {
 
 	@Override
 	public void initWidget(Bundle savedInstanceState) {
-		x.image().bind(splashBgIV, "assets://splash_bg.png");
+		x.image().bind(splashBgIV, "assets://splash_bg.png", new ImageOptions.Builder().setFadeIn(true).build());
 		handler.postDelayed(runnable, SPLASH_DISPLAY_DURATION);
 	}
 

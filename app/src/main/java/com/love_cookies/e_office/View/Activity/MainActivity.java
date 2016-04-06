@@ -9,6 +9,7 @@ import com.love_cookies.cookie_library.Activity.BaseActivity;
 import com.love_cookies.e_office.Model.Bean.UserBean;
 import com.love_cookies.e_office.R;
 
+import org.xutils.image.ImageOptions;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -32,7 +33,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initWidget(Bundle savedInstanceState) {
         titleTV.setText(R.string.app_name);
-        x.image().bind(indexTopBgIV, "assets://index_top_bg.png");
+        x.image().bind(indexTopBgIV, "assets://index_top_bg.png", new ImageOptions.Builder().setFadeIn(true).build());
         userBean = BmobUser.getCurrentUser(this, UserBean.class);
         userNicknameTV.setText(userBean.getNickname());
     }
