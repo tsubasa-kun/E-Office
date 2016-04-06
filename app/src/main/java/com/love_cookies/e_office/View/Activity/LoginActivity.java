@@ -42,6 +42,7 @@ public class LoginActivity extends BaseActivity implements ILoginView{
         titleTV.setText(R.string.login_title);
         loginBtn.setOnClickListener(this);
         registerBtn.setOnClickListener(this);
+        autoLogin();
     }
 
     @Override
@@ -86,6 +87,6 @@ public class LoginActivity extends BaseActivity implements ILoginView{
 
     @Override
     public void autoLogin() {
-
+        loginPresenter.autoLogin();
     }
 }

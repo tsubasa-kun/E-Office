@@ -1,8 +1,12 @@
 package com.love_cookies.e_office.Presenter;
 
+import com.love_cookies.cookie_library.Application.ActivityCollections;
 import com.love_cookies.cookie_library.Interface.CallBack;
+import com.love_cookies.e_office.Model.Bean.UserBean;
 import com.love_cookies.e_office.Model.Biz.LoginBiz;
 import com.love_cookies.e_office.View.Interface.ILoginView;
+
+import cn.bmob.v3.BmobUser;
 
 /**
  * Created by xiekun on 2016/4/4.
@@ -31,6 +35,13 @@ public class LoginPresenter {
                 iLoginView.loginFailed((String)msg);
             }
         });
+    }
+
+    public void autoLogin() {
+        UserBean userBean = BmobUser.getCurrentUser(ActivityCollections.getInstance().currentActivity(), UserBean.class);
+        if(userBean != null) {
+            iLoginView.turnToMain();
+        }
     }
 
 }
