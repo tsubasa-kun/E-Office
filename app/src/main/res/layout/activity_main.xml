@@ -1,16 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".View.Activity.MainActivity">
+    android:orientation="vertical"
+    android:background="@color/white">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+    <include layout="@layout/view_title_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- 用户信息栏 -->
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="600px"
+                android:background="@color/theme_color">
+
+                <ImageView
+                    android:id="@+id/index_top_bg_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:alpha="0.8"/>
+
+                <ImageView
+                    android:id="@+id/user_hard_iv"
+                    android:layout_width="250px"
+                    android:layout_height="250px"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="100px"
+                    android:src="@mipmap/user_img"/>
+
+                <TextView
+                    android:id="@+id/user_nickname_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/user_hard_iv"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="72px"
+                    android:textColor="@color/white"
+                    android:textSize="60px"
+                    android:textStyle="bold"
+                    tools:text="用户昵称"/>
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <!-- 功能模块栏 -->
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+    </ScrollView>
+
+</com.zhy.autolayout.AutoLinearLayout>
