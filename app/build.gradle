@@ -20,6 +20,14 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':cookie-library')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':cookie-library')//Cookie-Library开发库
+    ////
+    //////Bmob-SDK相关
+    compile 'com.android.support:support-v4:23.2.1'//用于兼容Android6.0系统，并提供权限管理工具
+    ////CDN文件服务使用okhttp相关包进行文件的上传和下载
+    compile 'com.squareup.okhttp:okhttp:2.+'//okhttp
+    compile 'com.squareup.okio:okio:1.+'//okio
+    ////
+    //////
 }

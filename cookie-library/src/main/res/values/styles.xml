@@ -3,9 +3,9 @@
     <!-- Base application theme. -->
     <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/tomato</item>
-        <item name="colorPrimaryDark">@color/tomato</item>
-        <item name="colorAccent">@color/tomato</item>
+        <item name="colorPrimary">@color/SORA</item>
+        <item name="colorPrimaryDark">@color/SORA</item>
+        <item name="colorAccent">@color/SORA</item>
     </style>
 
     <!-- Activity滑动切换主题（类似IOS） -->

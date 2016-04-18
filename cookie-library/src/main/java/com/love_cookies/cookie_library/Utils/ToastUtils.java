@@ -7,7 +7,7 @@ import android.widget.Toast;
 /**
  * Created by xiekun on 2016/3/27.
  *
- * F显示Toast的工具类
+ * 显示Toast的工具类
  */
 public class ToastUtils {
 
