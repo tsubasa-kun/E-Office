@@ -8,5 +8,12 @@ import com.love_cookies.cookie_library.Interface.CallBack;
  * 注册逻辑接口
  */
 public interface IRegisterBiz {
+    /**
+     * 注册
+     * @param username
+     * @param password
+     * @param nickname
+     * @param callBack
+     */
     void doRegister(String username, String password, String nickname, CallBack callBack);
 }

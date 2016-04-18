@@ -19,6 +19,12 @@ public class RegisterPresenter {
         this.iRegisterView = iRegisterView;
     }
 
+    /**
+     * 注册
+     * @param username
+     * @param password
+     * @param nickname
+     */
     public void doRegister(String username, String password, String nickname) {
         registerBiz.doRegister(username, password, nickname, new CallBack() {
             @Override

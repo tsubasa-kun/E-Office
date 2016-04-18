@@ -67,6 +67,7 @@
                     android:orientation="horizontal">
 
                     <com.love_cookies.e_office.View.Widget.MenuItemView
+                        android:id="@+id/project_btn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -74,6 +75,7 @@
                         miv:Title="@string/project_title"/>
 
                     <com.love_cookies.e_office.View.Widget.MenuItemView
+                        android:id="@+id/official_btn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -81,6 +83,7 @@
                         miv:Title="@string/official_title"/>
 
                     <com.love_cookies.e_office.View.Widget.MenuItemView
+                        android:id="@+id/notice_btn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -97,6 +100,7 @@
                     android:orientation="horizontal">
 
                     <com.love_cookies.e_office.View.Widget.MenuItemView
+                        android:id="@+id/enterprise_btn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -104,6 +108,7 @@
                         miv:Title="@string/enterprise_title"/>
 
                     <com.love_cookies.e_office.View.Widget.MenuItemView
+                        android:id="@+id/meeting_btn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -111,6 +116,7 @@
                         miv:Title="@string/meeting_title"/>
 
                     <com.love_cookies.e_office.View.Widget.MenuItemView
+                        android:id="@+id/attendance_btn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

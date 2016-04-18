@@ -8,5 +8,11 @@ import com.love_cookies.cookie_library.Interface.CallBack;
  * 登录逻辑接口
  */
 public interface ILoginBiz {
+    /**
+     * 登录
+     * @param username
+     * @param password
+     * @param callBack
+     */
     void doLogin(String username, String password, CallBack callBack);
 }

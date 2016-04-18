@@ -13,6 +13,12 @@ import cn.bmob.v3.listener.SaveListener;
  * 登录逻辑
  */
 public class LoginBiz implements ILoginBiz{
+    /**
+     * 登录
+     * @param username
+     * @param password
+     * @param callBack
+     */
     @Override
     public void doLogin(String username, String password, final CallBack callBack) {
         final UserBean userBean = new UserBean();

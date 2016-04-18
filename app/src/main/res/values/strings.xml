@@ -3,6 +3,8 @@
     <string name="app_intro">让办公更简单</string>
     <string name="app_right">love-cookies\nCopyright © 2016 XIEKUN .All Rights Reserved</string>
 
+    <string name="exit_tip">再按一次退出</string>
+
     <string name="wait_text">请稍后...</string>
 
     <string name="login_title">登录</string>

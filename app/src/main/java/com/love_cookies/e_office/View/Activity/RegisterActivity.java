@@ -24,30 +24,37 @@ import org.xutils.view.annotation.ViewInject;
  */
 @ContentView(R.layout.activity_register)
 public class RegisterActivity extends BaseActivity implements IRegisterView {
-
-    @ViewInject(R.id.text_title)
-    TextView title;
+    @ViewInject(R.id.title_tv)
+    private TextView title;
     @ViewInject(R.id.left_btn)
-    ImageView leftBtn;
+    private ImageView leftBtn;
     @ViewInject(R.id.username_et)
-    EditText usernameET;
+    private EditText usernameET;
     @ViewInject(R.id.password_et)
-    EditText passwordET;
+    private EditText passwordET;
     @ViewInject(R.id.nickname_et)
-    EditText nicknameET;
+    private EditText nicknameET;
     @ViewInject(R.id.register_btn)
-    TextView registerBtn;
+    private TextView registerBtn;
 
-    RegisterPresenter registerPresenter = new RegisterPresenter(this);
+    private RegisterPresenter registerPresenter = new RegisterPresenter(this);
 
+    /**
+     * 初始化控件
+     * @param savedInstanceState
+     */
     @Override
     public void initWidget(Bundle savedInstanceState) {
         title.setText(R.string.register_title);
-        leftBtn.setImageResource(R.drawable.title_btn_back);
+        leftBtn.setImageResource(R.mipmap.title_btn_back);
         leftBtn.setOnClickListener(this);
         registerBtn.setOnClickListener(this);
     }
 
+    /**
+     * 控件点击事件
+     * @param view
+     */
     @Override
     public void widgetClick(View view) {
         switch (view.getId()) {
@@ -62,6 +69,9 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
         }
     }
 
+    /**
+     * 注册
+     */
     @Override
     public void doRegister() {
         String username = usernameET.getText().toString();
@@ -79,6 +89,9 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
         }
     }
 
+    /**
+     * 跳转到登录页
+     */
     @Override
     public void turnToLogin() {
         ProgressUtils.hideProgress();
@@ -86,6 +99,10 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
         finish();
     }
 
+    /**
+     * 注册失败
+     * @param msg
+     */
     @Override
     public void registerFailed(String msg) {
         ProgressUtils.hideProgress();

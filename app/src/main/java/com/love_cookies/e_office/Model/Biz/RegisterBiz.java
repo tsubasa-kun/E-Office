@@ -13,6 +13,13 @@ import cn.bmob.v3.listener.SaveListener;
  * 注册逻辑
  */
 public class RegisterBiz implements IRegisterBiz {
+    /**
+     * 注册
+     * @param username
+     * @param password
+     * @param nickname
+     * @param callBack
+     */
     @Override
     public void doRegister(String username, String password, String nickname, final CallBack callBack) {
         final UserBean userBean = new UserBean();

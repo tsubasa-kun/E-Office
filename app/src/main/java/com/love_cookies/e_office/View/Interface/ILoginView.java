@@ -6,8 +6,24 @@ package com.love_cookies.e_office.View.Interface;
  * 登录页View接口
  */
 public interface ILoginView {
+    /**
+     * 登录
+     */
     void doLogin();
+
+    /**
+     * 跳转到主页
+     */
     void turnToMain();
+
+    /**
+     * 登录失败
+     * @param msg
+     */
     void loginFailed(String msg);
+
+    /**
+     * 自动登录
+     */
     void autoLogin();
 }

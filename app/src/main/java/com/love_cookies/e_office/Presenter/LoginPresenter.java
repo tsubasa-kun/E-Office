@@ -23,6 +23,11 @@ public class LoginPresenter {
         this.iLoginView = iLoginView;
     }
 
+    /**
+     * 登录
+     * @param username
+     * @param password
+     */
     public void doLogin(String username, String password) {
         loginBiz.doLogin(username, password, new CallBack() {
             @Override
@@ -37,6 +42,9 @@ public class LoginPresenter {
         });
     }
 
+    /**
+     * 自动登录
+     */
     public void autoLogin() {
         UserBean userBean = BmobUser.getCurrentUser(ActivityCollections.getInstance().currentActivity(), UserBean.class);
         if(userBean != null) {

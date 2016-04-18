@@ -29,6 +29,12 @@
         <activity android:name=".View.Activity.MainActivity" />
         <activity android:name=".View.Activity.LoginActivity" />
         <activity android:name=".View.Activity.RegisterActivity" />
+        <activity android:name=".View.Activity.ProjectActivity" />
+        <activity android:name=".View.Activity.OfficialActivity" />
+        <activity android:name=".View.Activity.NoticeActivity" />
+        <activity android:name=".View.Activity.EnterpriseActivity" />
+        <activity android:name=".View.Activity.MeetingActivity" />
+        <activity android:name=".View.Activity.AttendanceActivity"></activity>
     </application>
 
 </manifest>
