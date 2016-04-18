@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/item_icon"
+        android:layout_width="240px"
+        android:layout_height="240px"
+        android:scaleType="fitXY"
+        tools:src="@mipmap/icon_project" />
+
+    <TextView
+        android:id="@+id/item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24px"
+        android:padding="6px"
+        android:textColor="@color/black"
+        android:textSize="42px"
+        tools:text="项目" />
+
+</com.zhy.autolayout.AutoLinearLayout>

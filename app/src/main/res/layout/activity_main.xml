@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:miv="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/white">
 
@@ -53,6 +54,72 @@
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <!-- 功能模块栏 -->
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="60px"
+                    android:orientation="horizontal">
+
+                    <com.love_cookies.e_office.View.Widget.MenuItemView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        miv:Icon="@mipmap/icon_project"
+                        miv:Title="@string/project_title"/>
+
+                    <com.love_cookies.e_office.View.Widget.MenuItemView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        miv:Icon="@mipmap/icon_official"
+                        miv:Title="@string/official_title"/>
+
+                    <com.love_cookies.e_office.View.Widget.MenuItemView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        miv:Icon="@mipmap/icon_notice"
+                        miv:Title="@string/notice_title"/>
+
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="60px"
+                    android:orientation="horizontal">
+
+                    <com.love_cookies.e_office.View.Widget.MenuItemView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        miv:Icon="@mipmap/icon_enterprise"
+                        miv:Title="@string/enterprise_title"/>
+
+                    <com.love_cookies.e_office.View.Widget.MenuItemView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        miv:Icon="@mipmap/icon_meeting"
+                        miv:Title="@string/meeting_title"/>
+
+                    <com.love_cookies.e_office.View.Widget.MenuItemView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        miv:Icon="@mipmap/icon_attendance"
+                        miv:Title="@string/attendance_title"/>
+
+                </com.zhy.autolayout.AutoLinearLayout>
+
+            </com.zhy.autolayout.AutoLinearLayout>
 
         </com.zhy.autolayout.AutoLinearLayout>
 
