@@ -12,7 +12,9 @@ import com.love_cookies.cookie_library.Activity.BaseActivity;
 import com.love_cookies.cookie_library.Application.ActivityCollections;
 import com.love_cookies.cookie_library.Utils.ToastUtils;
 import com.love_cookies.e_office.Model.Bean.UserBean;
+import com.love_cookies.e_office.Presenter.MainPresenter;
 import com.love_cookies.e_office.R;
+import com.love_cookies.e_office.View.Interface.IMainView;
 import com.love_cookies.e_office.View.Widget.MenuItemView;
 
 import org.xutils.image.ImageOptions;
@@ -20,15 +22,13 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-import cn.bmob.v3.BmobUser;
-
 /**
  * Created by xiekun on 2016/4/18.
  *
  * 主页
  */
 @ContentView(R.layout.activity_main)
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements IMainView {
     @ViewInject(R.id.title_tv)
     private TextView titleTV;
     @ViewInject(R.id.index_top_bg_iv)
@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivity {
     @ViewInject(R.id.attendance_btn)
     private MenuItemView attendanceBtn;
 
-    private UserBean userBean;
+    private MainPresenter mainPresenter = new MainPresenter(this);
 
     private long exitTime;
 
@@ -62,8 +62,7 @@ public class MainActivity extends BaseActivity {
     public void initWidget(Bundle savedInstanceState) {
         titleTV.setText(R.string.app_name);
         x.image().bind(indexTopBgIV, "assets://index_top_bg.png", new ImageOptions.Builder().setFadeIn(true).build());
-        userBean = BmobUser.getCurrentUser(this, UserBean.class);
-        userNicknameTV.setText(userBean.getNickname());
+        getUser();
         projectBtn.setOnClickListener(this);
         officialBtn.setOnClickListener(this);
         noticeBtn.setOnClickListener(this);
@@ -74,9 +73,9 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    signBtn.setText(R.string.sign_out);
+                    doSignIn();
                 } else {
-                    signBtn.setText(R.string.sign_in);
+                    doSignOut();
                 }
             }
         });
@@ -113,6 +112,75 @@ public class MainActivity extends BaseActivity {
     }
 
     /**
+     * 获取用户
+     */
+    @Override
+    public void getUser() {
+        mainPresenter.getUser();
+    }
+
+    /**
+     * 设置用户
+     * @param userBean
+     */
+    @Override
+    public void setUser(UserBean userBean) {
+        userNicknameTV.setText(userBean.getNickname());
+    }
+
+    /**
+     * 签到
+     */
+    @Override
+    public void doSignIn() {
+        mainPresenter.doSignIn();
+    }
+
+    /**
+     * 签到成功
+     */
+    @Override
+    public void signInSuccess() {
+        ToastUtils.show(this, R.string.sign_in_success_tip);
+        signBtn.setText(R.string.sign_out);
+    }
+
+    /**
+     * 签到失败
+     */
+    @Override
+    public void signInFailed() {
+        ToastUtils.show(this, R.string.sign_in_failed_tip);
+        signBtn.setText(R.string.sign_in);
+    }
+
+    /**
+     * 签退
+     */
+    @Override
+    public void doSignOut() {
+        mainPresenter.doSignOut();
+    }
+
+    /**
+     * 签退成功
+     */
+    @Override
+    public void signOutSuccess() {
+        ToastUtils.show(this, R.string.sign_out_success_tip);
+        signBtn.setText(R.string.sign_in);
+    }
+
+    /**
+     * 签退失败
+     */
+    @Override
+    public void signOutFailed() {
+        ToastUtils.show(this, R.string.sign_out_failed_tip);
+        signBtn.setText(R.string.sign_out);
+    }
+
+    /**
      * 点两次返回退出程序
      * @param keyCode
      * @param event
@@ -133,5 +201,4 @@ public class MainActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
 }

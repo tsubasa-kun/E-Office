@@ -22,7 +22,11 @@
     <string name="login_failed_text">登录失败</string>
 
     <string name="sign_in">签到</string>
+    <string name="sign_in_success_tip">签到成功</string>
+    <string name="sign_in_failed_tip">签到失败</string>
     <string name="sign_out">签退</string>
+    <string name="sign_out_success_tip">签退成功</string>
+    <string name="sign_out_failed_tip">签退失败</string>
 
     <string name="project_title">项目</string>
     <string name="official_title">公文</string>

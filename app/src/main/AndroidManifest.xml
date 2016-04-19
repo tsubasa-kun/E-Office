@@ -34,7 +34,7 @@
         <activity android:name=".View.Activity.NoticeActivity" />
         <activity android:name=".View.Activity.EnterpriseActivity" />
         <activity android:name=".View.Activity.MeetingActivity" />
-        <activity android:name=".View.Activity.AttendanceActivity"></activity>
+        <activity android:name=".View.Activity.AttendanceActivity" />
     </application>
 
 </manifest>
