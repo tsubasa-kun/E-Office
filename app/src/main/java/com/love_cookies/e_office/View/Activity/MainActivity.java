@@ -3,6 +3,8 @@ package com.love_cookies.e_office.View.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,6 +35,8 @@ public class MainActivity extends BaseActivity {
     private ImageView indexTopBgIV;
     @ViewInject(R.id.user_nickname_tv)
     private TextView userNicknameTV;
+    @ViewInject(R.id.sign_btn)
+    private CheckBox signBtn;
     @ViewInject(R.id.project_btn)
     private MenuItemView projectBtn;
     @ViewInject(R.id.official_btn)
@@ -66,6 +70,16 @@ public class MainActivity extends BaseActivity {
         enterpriseBtn.setOnClickListener(this);
         meetingBtn.setOnClickListener(this);
         attendanceBtn.setOnClickListener(this);
+        signBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    signBtn.setText(R.string.sign_out);
+                } else {
+                    signBtn.setText(R.string.sign_in);
+                }
+            }
+        });
     }
 
     /**

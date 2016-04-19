@@ -51,6 +51,20 @@
                     android:textStyle="bold"
                     tools:text="用户昵称"/>
 
+                <CheckBox
+                    android:id="@+id/sign_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="100px"
+                    android:button="@null"
+                    android:text="@string/sign_in"
+                    android:textColor="@color/white"
+                    android:textSize="42px"
+                    android:background="@drawable/sign_btn_bg"
+                    android:padding="18px"/>
+
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <!-- 功能模块栏 -->
