@@ -151,10 +151,27 @@ public class AttendanceBiz implements IAttendanceBiz{
 
     /**
      * 获取考勤信息
+     * @param offset
      * @param callBack
      */
     @Override
-    public void getAttendance(CallBack callBack) {
+    public void getAttendance(int offset, final CallBack callBack) {
+        BmobQuery<AttendanceBean> query = new BmobQuery<>();
+        UserBean userBean = BmobUser.getCurrentUser(ActivityCollections.getInstance().currentActivity(), UserBean.class);
+        query.addWhereEqualTo("username", userBean.getUsername());
+        query.setLimit(10);
+        query.setSkip(10 * offset);
+        query.order("sign_in");
+        query.findObjects(ActivityCollections.getInstance().currentActivity(), new FindListener<AttendanceBean>() {
+            @Override
+            public void onSuccess(List<AttendanceBean> list) {
+                callBack.onSuccess(list);
+            }
 
+            @Override
+            public void onError(int i, String s) {
+                callBack.onFailed(s);
+            }
+        });
     }
 }

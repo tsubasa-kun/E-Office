@@ -22,7 +22,8 @@ public interface IAttendanceBiz {
 
     /**
      * 获取考勤信息
+     * @param offset
      * @param callBack
      */
-    void getAttendance(CallBack callBack);
+    void getAttendance(int offset, CallBack callBack);
 }
