@@ -10,10 +10,12 @@ import android.widget.TextView;
 
 import com.love_cookies.cookie_library.Activity.BaseActivity;
 import com.love_cookies.cookie_library.Application.ActivityCollections;
+import com.love_cookies.cookie_library.Utils.SPUtils;
 import com.love_cookies.cookie_library.Utils.ToastUtils;
 import com.love_cookies.e_office.Model.Bean.UserBean;
 import com.love_cookies.e_office.Presenter.MainPresenter;
 import com.love_cookies.e_office.R;
+import com.love_cookies.e_office.Utils.DateTimeUtil;
 import com.love_cookies.e_office.View.Interface.IMainView;
 import com.love_cookies.e_office.View.Widget.MenuItemView;
 
@@ -73,12 +75,18 @@ public class MainActivity extends BaseActivity implements IMainView {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    doSignIn();
+                    if (!(boolean)SPUtils.get(MainActivity.this, "sign_in", false)) {
+                        doSignIn();
+                    }
                 } else {
                     doSignOut();
                 }
             }
         });
+        if ((boolean)SPUtils.get(MainActivity.this, "sign_in", false)) {
+            signBtn.setChecked(true);
+            signBtn.setText(R.string.sign_out);
+        }
     }
 
     /**
@@ -142,6 +150,8 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void signInSuccess() {
         ToastUtils.show(this, R.string.sign_in_success_tip);
+        SPUtils.put(this, "sign_in", true);
+        SPUtils.put(this, "date", DateTimeUtil.getCurrentYear());
         signBtn.setText(R.string.sign_out);
     }
 
@@ -168,6 +178,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void signOutSuccess() {
         ToastUtils.show(this, R.string.sign_out_success_tip);
+        SPUtils.put(this, "sign_in", false);
         signBtn.setText(R.string.sign_in);
     }
 
