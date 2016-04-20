@@ -18,4 +18,13 @@ public class DateTimeUtil {
         Date curDate = new Date(System.currentTimeMillis());
         return formatter.format(curDate);
     }
+
+    /**
+     * 获取当前年
+     */
+    public static String getCurrentYear() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date curDate = new Date(System.currentTimeMillis());
+        return formatter.format(curDate);
+    }
 }

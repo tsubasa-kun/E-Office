@@ -1,7 +1,21 @@
 package com.love_cookies.e_office.Model.Biz;
 
+import android.content.Context;
+
+import com.love_cookies.cookie_library.Application.ActivityCollections;
 import com.love_cookies.cookie_library.Interface.CallBack;
+import com.love_cookies.e_office.Model.Bean.AttendanceBean;
+import com.love_cookies.e_office.Model.Bean.UserBean;
 import com.love_cookies.e_office.Model.Biz.Interface.IAttendanceBiz;
+import com.love_cookies.e_office.Utils.DateTimeUtil;
+
+import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * Created by xiekun on 2016/4/19 0019.
@@ -14,8 +28,62 @@ public class AttendanceBiz implements IAttendanceBiz{
      * @param callBack
      */
     @Override
-    public void doSignIn(CallBack callBack) {
-        callBack.onSuccess(0);
+    public void doSignIn(final CallBack callBack) {
+        final Context context = ActivityCollections.getInstance().currentActivity();
+        final UserBean userBean = BmobUser.getCurrentUser(context, UserBean.class);
+        BmobQuery<AttendanceBean> query = new BmobQuery<AttendanceBean>();
+        query.addWhereEqualTo("username", userBean.getUsername());
+        query.addWhereContains("sign_in", DateTimeUtil.getCurrentYear());
+        query.findObjects(context, new FindListener<AttendanceBean>() {
+            @Override
+            public void onSuccess(List<AttendanceBean> object) {
+                if (object != null && object.size() > 0) {
+                    String objectId = object.get(0).getObjectId();
+                    AttendanceBean attendanceBean = new AttendanceBean();
+                    attendanceBean.setSign_in(DateTimeUtil.getCurrentTime());
+                    attendanceBean.update(context, objectId, new UpdateListener() {
+                        @Override
+                        public void onSuccess() {
+                            callBack.onSuccess(0);
+                        }
+                        @Override
+                        public void onFailure(int code, String msg) {
+                            callBack.onFailed(msg);
+                        }
+                    });
+                } else {
+                    AttendanceBean attendanceBean = new AttendanceBean();
+                    attendanceBean.setUsername(userBean.getUsername());
+                    attendanceBean.setSign_in(DateTimeUtil.getCurrentTime());
+                    attendanceBean.save(context, new SaveListener() {
+                        @Override
+                        public void onSuccess() {
+                            callBack.onSuccess(0);
+                        }
+                        @Override
+                        public void onFailure(int code, String msg) {
+                            callBack.onFailed(msg);
+                        }
+                    });
+                }
+            }
+            @Override
+            public void onError(int code, String msg) {
+                AttendanceBean attendanceBean = new AttendanceBean();
+                attendanceBean.setUsername(userBean.getUsername());
+                attendanceBean.setSign_in(DateTimeUtil.getCurrentTime());
+                attendanceBean.save(context, new SaveListener() {
+                    @Override
+                    public void onSuccess() {
+                        callBack.onSuccess(0);
+                    }
+                    @Override
+                    public void onFailure(int code, String msg) {
+                        callBack.onFailed(msg);
+                    }
+                });
+            }
+        });
     }
 
     /**
@@ -23,8 +91,62 @@ public class AttendanceBiz implements IAttendanceBiz{
      * @param callBack
      */
     @Override
-    public void doSignOut(CallBack callBack) {
-        callBack.onSuccess(0);
+    public void doSignOut(final CallBack callBack) {
+        final Context context = ActivityCollections.getInstance().currentActivity();
+        final UserBean userBean = BmobUser.getCurrentUser(context, UserBean.class);
+        BmobQuery<AttendanceBean> query = new BmobQuery<AttendanceBean>();
+        query.addWhereEqualTo("username", userBean.getUsername());
+        query.addWhereContains("sign_in", DateTimeUtil.getCurrentYear());
+        query.findObjects(context, new FindListener<AttendanceBean>() {
+            @Override
+            public void onSuccess(List<AttendanceBean> object) {
+                if (object != null && object.size() > 0) {
+                    String objectId = object.get(0).getObjectId();
+                    AttendanceBean attendanceBean = new AttendanceBean();
+                    attendanceBean.setSign_out(DateTimeUtil.getCurrentTime());
+                    attendanceBean.update(context, objectId, new UpdateListener() {
+                        @Override
+                        public void onSuccess() {
+                            callBack.onSuccess(0);
+                        }
+                        @Override
+                        public void onFailure(int code, String msg) {
+                            callBack.onFailed(msg);
+                        }
+                    });
+                } else {
+                    AttendanceBean attendanceBean = new AttendanceBean();
+                    attendanceBean.setUsername(userBean.getUsername());
+                    attendanceBean.setSign_out(DateTimeUtil.getCurrentTime());
+                    attendanceBean.save(context, new SaveListener() {
+                        @Override
+                        public void onSuccess() {
+                            callBack.onSuccess(0);
+                        }
+                        @Override
+                        public void onFailure(int code, String msg) {
+                            callBack.onFailed(msg);
+                        }
+                    });
+                }
+            }
+            @Override
+            public void onError(int code, String msg) {
+                AttendanceBean attendanceBean = new AttendanceBean();
+                attendanceBean.setUsername(userBean.getUsername());
+                attendanceBean.setSign_out(DateTimeUtil.getCurrentTime());
+                attendanceBean.save(context, new SaveListener() {
+                    @Override
+                    public void onSuccess() {
+                        callBack.onSuccess(0);
+                    }
+                    @Override
+                    public void onFailure(int code, String msg) {
+                        callBack.onFailed(msg);
+                    }
+                });
+            }
+        });
     }
 
     /**
