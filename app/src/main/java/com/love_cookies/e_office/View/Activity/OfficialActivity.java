@@ -22,6 +22,8 @@ public class OfficialActivity extends BaseActivity {
     private TextView titleTV;
     @ViewInject(R.id.left_btn)
     private ImageView leftBtn;
+    @ViewInject(R.id.right_btn)
+    private TextView rightBtn;
 
     /**
      * 初始化控件
@@ -32,6 +34,8 @@ public class OfficialActivity extends BaseActivity {
         titleTV.setText(R.string.official_title);
         leftBtn.setImageResource(R.mipmap.title_btn_back);
         leftBtn.setOnClickListener(this);
+        rightBtn.setText(R.string.publish_btn_text);
+        rightBtn.setOnClickListener(this);
     }
 
     /**
@@ -43,6 +47,8 @@ public class OfficialActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.left_btn:
                 finish();
+                break;
+            case R.id.right_btn:
                 break;
             default:
                 break;
