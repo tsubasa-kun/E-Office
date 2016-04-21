@@ -161,7 +161,7 @@ public class AttendanceBiz implements IAttendanceBiz{
         query.addWhereEqualTo("username", userBean.getUsername());
         query.setLimit(10);
         query.setSkip(10 * offset);
-        query.order("sign_in");
+        query.order("-sign_in");
         query.findObjects(ActivityCollections.getInstance().currentActivity(), new FindListener<AttendanceBean>() {
             @Override
             public void onSuccess(List<AttendanceBean> list) {
