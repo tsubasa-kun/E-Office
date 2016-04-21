@@ -23,10 +23,12 @@
         android:textSize="54px"
         android:singleLine="true"/>
 
-    <ImageView
+    <TextView
         android:id="@+id/right_btn"
         android:layout_width="120px"
         android:layout_height="120px"
-        android:scaleType="centerCrop"/>
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="42px"/>
 
 </com.zhy.autolayout.AutoLinearLayout>

@@ -34,4 +34,6 @@
     <string name="enterprise_title">企业</string>
     <string name="meeting_title">会议</string>
     <string name="attendance_title">出勤</string>
+
+    <string name="publish_btn_text">发布</string>
 </resources>
