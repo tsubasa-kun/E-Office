@@ -38,6 +38,10 @@
     <string name="publish_btn_text">发布</string>
     <string name="initiate_btn_text">发起</string>
 
+    <string name="add_btn_text">添加</string>
     <string name="project_detail_title">项目详情</string>
     <string name="project_log_title">项目日志</string>
+    <string name="add_project_log_title">添加项目日志</string>
+    <string name="log_content_hint">请输入日志内容</string>
+    <string name="add_project_log_success_tip">添加项目日志成功</string>
 </resources>

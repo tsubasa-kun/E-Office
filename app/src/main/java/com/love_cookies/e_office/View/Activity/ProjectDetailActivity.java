@@ -9,7 +9,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.love_cookies.cookie_library.Activity.BaseActivity;
+import com.love_cookies.cookie_library.Utils.ToastUtils;
 import com.love_cookies.cookie_library.Widget.LoadAndRefreshView;
+import com.love_cookies.e_office.Event.AddProjectLogEvent;
 import com.love_cookies.e_office.Model.Bean.ProjectBean;
 import com.love_cookies.e_office.Model.Bean.ProjectLogBean;
 import com.love_cookies.e_office.Presenter.ProjectDetailPresenter;
@@ -22,6 +24,8 @@ import org.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by xiekun on 2016/4/23.
@@ -64,7 +68,7 @@ public class ProjectDetailActivity extends BaseActivity implements IProjectDetai
         titleTV.setText(R.string.project_detail_title);
         leftBtn.setImageResource(R.mipmap.title_btn_back);
         leftBtn.setOnClickListener(this);
-        rightBtn.setText(R.string.publish_btn_text);
+        rightBtn.setText(R.string.add_btn_text);
         rightBtn.setOnClickListener(this);
         loadAndRefreshView.setOnHeaderRefreshListener(this);
         loadAndRefreshView.setOnFooterRefreshListener(this);
@@ -73,6 +77,7 @@ public class ProjectDetailActivity extends BaseActivity implements IProjectDetai
         project_id = getIntent().getExtras().getString("project_id");
         getProjectDetail(project_id);
         getProjectLog(project_id, offset);
+        EventBus.getDefault().register(this);
     }
 
     /**
@@ -86,6 +91,9 @@ public class ProjectDetailActivity extends BaseActivity implements IProjectDetai
                 finish();
                 break;
             case R.id.right_btn:
+                Bundle bundle = new Bundle();
+                bundle.putString("project_id", project_id);
+                turn(AddProjectLogActivity.class, bundle);
                 break;
             default:
                 break;
@@ -170,5 +178,16 @@ public class ProjectDetailActivity extends BaseActivity implements IProjectDetai
                 }
             }
         }.sendEmptyMessageDelayed(0, duration);
+    }
+
+    /**
+     * 添加项目日志事件
+     * from {@link AddProjectLogActivity#addSuccess()}
+     * @param addProjectLogEvent
+     */
+    public void onEvent(AddProjectLogEvent addProjectLogEvent) {
+        ToastUtils.show(this, R.string.add_project_log_success_tip);
+        offset = 0;
+        getProjectLog(project_id, offset);
     }
 }

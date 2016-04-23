@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_title_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/log_content_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30px"
+            android:background="@drawable/square_dd_et_bg"
+            android:gravity="left|top"
+            android:hint="@string/log_content_hint"
+            android:minLines="10"
+            android:padding="24px"
+            android:textColorHint="#BFBFBF"
+            android:textSize="48px" />
+
+    </ScrollView>
+
+</com.zhy.autolayout.AutoLinearLayout>

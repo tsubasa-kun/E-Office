@@ -48,7 +48,7 @@ public class ProjectDetailBiz implements IProjectDetailBiz {
     @Override
     public void getProjectLog(String project_id, int offset, final CallBack callBack) {
         BmobQuery<ProjectLogBean> query = new BmobQuery<>();
-        query.addWhereEqualTo("objectId", project_id);
+        query.addWhereEqualTo("project_id", project_id);
         query.setLimit(10);
         query.setSkip(10 * offset);
         query.findObjects(ActivityCollections.getInstance().currentActivity(), new FindListener<ProjectLogBean>() {

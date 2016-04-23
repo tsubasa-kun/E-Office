@@ -24,6 +24,6 @@ public class ProjectLogAdapter extends CommonAdapter<ProjectLogBean> {
     public void convert(CommonViewHolder commonViewHolder, ProjectLogBean projectLogBean) {
         commonViewHolder.setText(R.id.nickname_tv, projectLogBean.getNickname());
         commonViewHolder.setText(R.id.time_tv, projectLogBean.getTime());
-        commonViewHolder.setText(R.id.time_tv, projectLogBean.getTime());
+        commonViewHolder.setText(R.id.content_tv, projectLogBean.getContent());
     }
 }
