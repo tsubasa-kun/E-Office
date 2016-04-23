@@ -14,11 +14,4 @@ public interface IProjectBiz {
      * @param callBack
      */
     void getProject(int offset, CallBack callBack);
-
-    /**
-     * 获取项目详情
-     * @param project_id
-     * @param callBack
-     */
-    void getProjectDetail(String project_id, CallBack callBack);
 }

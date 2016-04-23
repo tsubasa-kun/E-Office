@@ -38,14 +38,4 @@ public class ProjectBiz implements IProjectBiz {
             }
         });
     }
-
-    /**
-     * 获取项目详情
-     * @param project_id
-     * @param callBack
-     */
-    @Override
-    public void getProjectDetail(String project_id, CallBack callBack) {
-
-    }
 }
