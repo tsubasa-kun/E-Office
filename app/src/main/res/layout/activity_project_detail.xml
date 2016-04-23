@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_title_bar" />
+
+    <com.love_cookies.cookie_library.Widget.LoadAndRefreshView
+        android:id="@+id/load_and_refresh_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/project_title_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="30px"
+                    android:textColor="@color/black"
+                    android:textSize="54px"
+                    android:textStyle="bold"
+                    tools:text="项目名称" />
+
+                <TextView
+                    android:id="@+id/project_content_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="30px"
+                    android:textColor="@color/black"
+                    android:textSize="48px"
+                    tools:text="项目名称" />
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_centerInParent="true"
+                        android:background="@color/theme_color" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@color/white"
+                        android:padding="30px"
+                        android:text="@string/project_log_title"
+                        android:textColor="@color/theme_color"
+                        android:textSize="36px" />
+
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.love_cookies.cookie_library.Widget.ListViewForScrollView
+                    android:id="@+id/project_log_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:cacheColorHint="#00000000"
+                    android:divider="@color/theme_color"
+                    android:dividerHeight="1px"
+                    android:listSelector="#00000000" />
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+        </ScrollView>
+
+    </com.love_cookies.cookie_library.Widget.LoadAndRefreshView>
+
+</com.zhy.autolayout.AutoLinearLayout>

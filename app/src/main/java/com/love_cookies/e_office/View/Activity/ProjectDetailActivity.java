@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -12,10 +11,11 @@ import android.widget.TextView;
 import com.love_cookies.cookie_library.Activity.BaseActivity;
 import com.love_cookies.cookie_library.Widget.LoadAndRefreshView;
 import com.love_cookies.e_office.Model.Bean.ProjectBean;
-import com.love_cookies.e_office.Presenter.ProjectPresenter;
+import com.love_cookies.e_office.Model.Bean.ProjectLogBean;
+import com.love_cookies.e_office.Presenter.ProjectDetailPresenter;
 import com.love_cookies.e_office.R;
-import com.love_cookies.e_office.View.Adapter.ProjectAdapter;
-import com.love_cookies.e_office.View.Interface.IProjectView;
+import com.love_cookies.e_office.View.Adapter.ProjectLogAdapter;
+import com.love_cookies.e_office.View.Interface.IProjectDetailView;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -24,27 +24,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by xiekun on 2016/4/18.
+ * Created by xiekun on 2016/4/23.
  *
- * 项目页
+ * 项目详情页
  */
-@ContentView(R.layout.activity_project)
-public class ProjectActivity extends BaseActivity implements IProjectView, LoadAndRefreshView.OnHeaderRefreshListener, LoadAndRefreshView.OnFooterRefreshListener {
+@ContentView(R.layout.activity_project_detail)
+public class ProjectDetailActivity extends BaseActivity implements IProjectDetailView, LoadAndRefreshView.OnHeaderRefreshListener, LoadAndRefreshView.OnFooterRefreshListener {
+
     @ViewInject(R.id.title_tv)
     private TextView titleTV;
     @ViewInject(R.id.left_btn)
     private ImageView leftBtn;
+    @ViewInject(R.id.right_btn)
+    private TextView rightBtn;
     @ViewInject(R.id.load_and_refresh_view)
     private LoadAndRefreshView loadAndRefreshView;
-    @ViewInject(R.id.project_list)
-    private ListView projectList;
+    @ViewInject(R.id.project_title_tv)
+    private TextView projectTitleTV;
+    @ViewInject(R.id.project_content_tv)
+    private TextView projectContentTV;
+    @ViewInject(R.id.project_log_list)
+    private ListView projectLogList;
 
-    private ProjectAdapter projectAdapter;
-    private List<ProjectBean> datas = new ArrayList<>();
+    private String project_id;
+
+    private ProjectLogAdapter projectLogAdapter;
+    private List<ProjectLogBean> datas = new ArrayList<>();
 
     private int offset = 0;
 
-    private ProjectPresenter projectPresenter = new ProjectPresenter(this);
+    private ProjectDetailPresenter projectDetailPresenter = new ProjectDetailPresenter(this);
 
     /**
      * 初始化控件
@@ -52,22 +61,18 @@ public class ProjectActivity extends BaseActivity implements IProjectView, LoadA
      */
     @Override
     public void initWidget(Bundle savedInstanceState) {
-        titleTV.setText(R.string.project_title);
+        titleTV.setText(R.string.project_detail_title);
         leftBtn.setImageResource(R.mipmap.title_btn_back);
         leftBtn.setOnClickListener(this);
+        rightBtn.setText(R.string.publish_btn_text);
+        rightBtn.setOnClickListener(this);
         loadAndRefreshView.setOnHeaderRefreshListener(this);
         loadAndRefreshView.setOnFooterRefreshListener(this);
-        projectAdapter = new ProjectAdapter(this, datas);
-        projectList.setAdapter(projectAdapter);
-        projectList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Bundle bundle = new Bundle();
-                bundle.putString("project_id", datas.get(position).getObjectId());
-                turn(ProjectDetailActivity.class, bundle);
-            }
-        });
-        getProject(offset);
+        projectLogAdapter = new ProjectLogAdapter(this, datas);
+        projectLogList.setAdapter(projectLogAdapter);
+        project_id = getIntent().getExtras().getString("project_id");
+        getProjectDetail(project_id);
+        getProjectLog(project_id, offset);
     }
 
     /**
@@ -80,31 +85,52 @@ public class ProjectActivity extends BaseActivity implements IProjectView, LoadA
             case R.id.left_btn:
                 finish();
                 break;
+            case R.id.right_btn:
+                break;
             default:
                 break;
         }
     }
 
     /**
-     * 获取项目
-     * @param offset
+     * 获取项目详情
+     * @param project_id
      */
     @Override
-    public void getProject(int offset) {
-        projectPresenter.getProject(offset);
+    public void getProjectDetail(String project_id) {
+        projectDetailPresenter.getProjectDetail(project_id);
     }
 
     /**
-     * 设置项目信息
-     * @param projects
+     * 设置项目详情
+     * @param projectBean
      */
     @Override
-    public void setProject(List<ProjectBean> projects) {
+    public void setProjectDetail(ProjectBean projectBean) {
+        projectTitleTV.setText(projectBean.getTitle());
+        projectContentTV.setText(projectBean.getContent());
+    }
+
+    /**
+     * 获取项目日志
+     * @param offset
+     */
+    @Override
+    public void getProjectLog(String project_id, int offset) {
+        projectDetailPresenter.getProjectLog(project_id, offset);
+    }
+
+    /**
+     * 设置项目日志
+     * @param projectLogs
+     */
+    @Override
+    public void setProjectLog(List<ProjectLogBean> projectLogs) {
         if(offset == 0) {
             datas.clear();
         }
-        datas.addAll(projects);
-        projectAdapter.notifyDataSetChanged();
+        datas.addAll(projectLogs);
+        projectLogAdapter.notifyDataSetChanged();
         onComplete();
     }
 
@@ -114,7 +140,7 @@ public class ProjectActivity extends BaseActivity implements IProjectView, LoadA
      */
     @Override
     public void onFooterRefresh(LoadAndRefreshView view) {
-        getProject(++offset);
+        getProjectLog(project_id, ++offset);
     }
 
     /**
@@ -124,7 +150,7 @@ public class ProjectActivity extends BaseActivity implements IProjectView, LoadA
     @Override
     public void onHeaderRefresh(LoadAndRefreshView view) {
         offset = 0;
-        getProject(offset);
+        getProjectLog(project_id, offset);
     }
 
     /**

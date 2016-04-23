@@ -35,6 +35,7 @@
         <activity android:name=".View.Activity.EnterpriseActivity" />
         <activity android:name=".View.Activity.MeetingActivity" />
         <activity android:name=".View.Activity.AttendanceActivity" />
+        <activity android:name=".View.Activity.ProjectDetailActivity"></activity>
     </application>
 
 </manifest>

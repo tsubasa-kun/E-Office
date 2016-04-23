@@ -34,7 +34,7 @@ public class ProjectBiz implements IProjectBiz {
 
             @Override
             public void onError(int i, String s) {
-
+                callBack.onFailed(s);
             }
         });
     }
