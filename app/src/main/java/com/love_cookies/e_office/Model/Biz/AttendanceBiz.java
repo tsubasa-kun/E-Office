@@ -31,7 +31,7 @@ public class AttendanceBiz implements IAttendanceBiz{
     public void doSignIn(final CallBack callBack) {
         final Context context = ActivityCollections.getInstance().currentActivity();
         final UserBean userBean = BmobUser.getCurrentUser(context, UserBean.class);
-        BmobQuery<AttendanceBean> query = new BmobQuery<AttendanceBean>();
+        BmobQuery<AttendanceBean> query = new BmobQuery<>();
         query.addWhereEqualTo("username", userBean.getUsername());
         query.addWhereContains("sign_in", DateTimeUtil.getCurrentYear());
         query.findObjects(context, new FindListener<AttendanceBean>() {
