@@ -11,7 +11,8 @@
         android:layout_width="240px"
         android:layout_height="240px"
         android:scaleType="fitXY"
-        tools:src="@mipmap/icon_project" />
+        tools:src="@mipmap/icon_project"
+        android:tint="@color/theme_color"/>
 
     <TextView
         android:id="@+id/item_title"
