@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100px"
+    android:layout_height="34dp"
     android:background="@color/white"
     android:gravity="center_vertical"
     android:orientation="horizontal">
@@ -14,7 +14,7 @@
         android:gravity="center"
         android:text="2016-04-20"
         android:textColor="@color/black"
-        android:textSize="36px" />
+        android:textSize="12sp" />
 
     <View
         android:layout_width="1px"
@@ -29,7 +29,7 @@
         android:gravity="center"
         android:text="09:00"
         android:textColor="@color/black"
-        android:textSize="36px" />
+        android:textSize="12sp" />
 
     <View
         android:layout_width="1px"
@@ -44,6 +44,6 @@
         android:gravity="center"
         android:text="18:00"
         android:textColor="@color/black"
-        android:textSize="36px" />
+        android:textSize="12sp" />
 
 </com.zhy.autolayout.AutoLinearLayout>
