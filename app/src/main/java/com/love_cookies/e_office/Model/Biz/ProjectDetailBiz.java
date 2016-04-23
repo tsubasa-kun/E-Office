@@ -51,6 +51,7 @@ public class ProjectDetailBiz implements IProjectDetailBiz {
         query.addWhereEqualTo("project_id", project_id);
         query.setLimit(10);
         query.setSkip(10 * offset);
+        query.order("-time");
         query.findObjects(ActivityCollections.getInstance().currentActivity(), new FindListener<ProjectLogBean>() {
             @Override
             public void onSuccess(List<ProjectLogBean> list) {
