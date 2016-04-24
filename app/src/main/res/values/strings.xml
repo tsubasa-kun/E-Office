@@ -44,4 +44,6 @@
     <string name="add_project_log_title">添加项目日志</string>
     <string name="log_content_hint">请输入日志内容</string>
     <string name="add_project_log_success_tip">添加项目日志成功</string>
+
+    <string name="enterprise_detail_title">企业详情</string>
 </resources>

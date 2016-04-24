@@ -3,8 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <include layout="@layout/view_title_bar" />
+
+    <com.love_cookies.cookie_library.Widget.LoadAndRefreshView
+        android:id="@+id/load_and_refresh_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/enterprise_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00000000"
+            android:cacheColorHint="#00000000"
+            android:listSelector="#00000000"
+            android:divider="@color/theme_color"
+            android:dividerHeight="1px" />
+
+    </com.love_cookies.cookie_library.Widget.LoadAndRefreshView>
 
 </com.zhy.autolayout.AutoLinearLayout>

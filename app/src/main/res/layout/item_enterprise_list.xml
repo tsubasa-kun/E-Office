@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/common_list_item_bg"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/icon_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/icon_enterprise"
+        android:tint="@color/theme_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/icon_iv"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="标题" />
+
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            tools:text="2016-04-23" />
+
+        <TextView
+            android:id="@+id/content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:text="内容" />
+
+    </LinearLayout>
+
+</RelativeLayout>
