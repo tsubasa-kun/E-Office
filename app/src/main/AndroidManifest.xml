@@ -38,7 +38,8 @@
         <activity android:name=".View.Activity.ProjectDetailActivity" />
         <activity android:name=".View.Activity.AddProjectLogActivity" />
         <activity android:name=".View.Activity.EnterpriseDetailActivity" />
-        <activity android:name=".View.Activity.AddNoticeActivity"></activity>
+        <activity android:name=".View.Activity.AddNoticeActivity" />
+        <activity android:name=".View.Activity.OfficialDetailActivity"></activity>
     </application>
 
 </manifest>
