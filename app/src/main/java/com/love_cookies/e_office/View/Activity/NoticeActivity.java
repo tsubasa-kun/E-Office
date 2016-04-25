@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.love_cookies.cookie_library.Activity.BaseActivity;
 import com.love_cookies.cookie_library.Widget.LoadAndRefreshView;
+import com.love_cookies.e_office.Event.AddNoticeEvent;
 import com.love_cookies.e_office.Model.Bean.NoticeBean;
 import com.love_cookies.e_office.Presenter.NoticePresenter;
 import com.love_cookies.e_office.R;
@@ -21,6 +22,8 @@ import org.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by xiekun on 2016/4/18.
@@ -63,6 +66,7 @@ public class NoticeActivity extends BaseActivity implements INoticeView, LoadAnd
         noticeAdapter = new NoticeAdapter(this, datas);
         noticeList.setAdapter(noticeAdapter);
         getNotice(offset);
+        EventBus.getDefault().register(this);
     }
 
     /**
@@ -76,6 +80,7 @@ public class NoticeActivity extends BaseActivity implements INoticeView, LoadAnd
                 finish();
                 break;
             case R.id.right_btn:
+                turn(AddNoticeActivity.class);
                 break;
             default:
                 break;
@@ -141,5 +146,15 @@ public class NoticeActivity extends BaseActivity implements INoticeView, LoadAnd
                 }
             }
         }.sendEmptyMessageDelayed(0, duration);
+    }
+
+    /**
+     * 添加项目日志事件
+     * from {@link AddProjectLogActivity#addSuccess()}
+     * @param addNoticeEvent
+     */
+    public void onEvent(AddNoticeEvent addNoticeEvent) {
+        offset = 0;
+        getNotice(offset);
     }
 }
