@@ -149,8 +149,8 @@ public class NoticeActivity extends BaseActivity implements INoticeView, LoadAnd
     }
 
     /**
-     * 添加项目日志事件
-     * from {@link AddProjectLogActivity#addSuccess()}
+     * 添加通知事件
+     * from {@link AddNoticeActivity#addSuccess()}
      * @param addNoticeEvent
      */
     public void onEvent(AddNoticeEvent addNoticeEvent) {
