@@ -56,4 +56,9 @@
     <string name="add_notice_success_tip">添加通知成功</string>
 
     <string name="official_detail_title">公文详情</string>
+
+    <string name="add_meeting_title">发起会议</string>
+    <string name="meeting_subject_hint">请输入会议主题</string>
+    <string name="meeting_time_hint">请选择会议时间</string>
+    <string name="add_meeting_success_tip">发起会议成功</string>
 </resources>
