@@ -9,7 +9,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.love_cookies.cookie_library.Activity.BaseActivity;
-import com.love_cookies.cookie_library.Utils.ToastUtils;
 import com.love_cookies.cookie_library.Widget.LoadAndRefreshView;
 import com.love_cookies.e_office.Event.AddProjectLogEvent;
 import com.love_cookies.e_office.Model.Bean.ProjectBean;
@@ -186,7 +185,6 @@ public class ProjectDetailActivity extends BaseActivity implements IProjectDetai
      * @param addProjectLogEvent
      */
     public void onEvent(AddProjectLogEvent addProjectLogEvent) {
-        ToastUtils.show(this, R.string.add_project_log_success_tip);
         offset = 0;
         getProjectLog(project_id, offset);
     }

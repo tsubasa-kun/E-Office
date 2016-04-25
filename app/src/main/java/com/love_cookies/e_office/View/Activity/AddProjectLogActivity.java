@@ -92,6 +92,7 @@ public class AddProjectLogActivity extends BaseActivity implements IAddProjectLo
      */
     @Override
     public void addSuccess() {
+        ToastUtils.show(this, R.string.add_project_log_success_tip);
         ProgressUtils.hideProgress();
         EventBus.getDefault().post(new AddProjectLogEvent());
         finish();
