@@ -50,7 +50,7 @@ public class AddProjectLogActivity extends BaseActivity implements IAddProjectLo
         titleTV.setText(R.string.add_project_log_title);
         leftBtn.setImageResource(R.mipmap.title_btn_back);
         leftBtn.setOnClickListener(this);
-        rightBtn.setText(R.string.publish_btn_text);
+        rightBtn.setText(R.string.submit_btn_text);
         rightBtn.setOnClickListener(this);
         project_id = getIntent().getExtras().getString("project_id");
     }
