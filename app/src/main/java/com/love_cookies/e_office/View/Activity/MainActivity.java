@@ -33,6 +33,8 @@ import org.xutils.x;
 public class MainActivity extends BaseActivity implements IMainView {
     @ViewInject(R.id.title_tv)
     private TextView titleTV;
+    @ViewInject(R.id.right_btn)
+    private TextView rightBtn;
     @ViewInject(R.id.index_top_bg_iv)
     private ImageView indexTopBgIV;
     @ViewInject(R.id.user_nickname_tv)
@@ -63,6 +65,8 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void initWidget(Bundle savedInstanceState) {
         titleTV.setText(R.string.app_name);
+        rightBtn.setText(R.string.logout_btn_text);
+        rightBtn.setOnClickListener(this);
         x.image().bind(indexTopBgIV, "assets://index_top_bg.png", new ImageOptions.Builder().setFadeIn(true).build());
         getUser();
         projectBtn.setOnClickListener(this);
@@ -96,6 +100,9 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void widgetClick(View view) {
         switch (view.getId()) {
+            case R.id.right_btn:
+                doLogout();
+                break;
             case R.id.project_btn:
                 turn(ProjectActivity.class);
                 break;
@@ -189,6 +196,23 @@ public class MainActivity extends BaseActivity implements IMainView {
     public void signOutFailed() {
         ToastUtils.show(this, R.string.sign_out_failed_tip);
         signBtn.setText(R.string.sign_out);
+    }
+
+    /**
+     * 登出
+     */
+    @Override
+    public void doLogout() {
+        mainPresenter.doLogout();
+    }
+
+    /**
+     * 跳转到登录页
+     */
+    @Override
+    public void turnToLogin() {
+        turn(LoginActivity.class);
+        ActivityCollections.getInstance().finishAllActivity();
     }
 
     /**

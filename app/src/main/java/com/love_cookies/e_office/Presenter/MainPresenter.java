@@ -64,4 +64,13 @@ public class MainPresenter {
             }
         });
     }
+
+    /**
+     * 登出
+     */
+    public void doLogout() {
+        BmobUser.logOut(ActivityCollections.getInstance().currentActivity());//清除缓存用户对象
+        BmobUser.getCurrentUser(ActivityCollections.getInstance().currentActivity());//现在的currentUser是null了
+        iMainView.turnToLogin();
+    }
 }

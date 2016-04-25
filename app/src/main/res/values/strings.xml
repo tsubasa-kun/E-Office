@@ -20,6 +20,7 @@
     <string name="register_success_text">注册成功，现在你可以登录啦</string>
     <string name="register_failed_text">注册失败</string>
     <string name="login_failed_text">登录失败</string>
+    <string name="logout_btn_text">登出</string>
 
     <string name="sign_in">签到</string>
     <string name="sign_in_success_tip">签到成功</string>

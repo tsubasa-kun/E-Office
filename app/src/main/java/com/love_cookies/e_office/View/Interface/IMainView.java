@@ -49,4 +49,14 @@ public interface IMainView {
      */
     void signOutFailed();
 
+    /**
+     * 登出
+     */
+    void doLogout();
+
+    /**
+     * 跳转到登录页
+     */
+    void turnToLogin();
+
 }
