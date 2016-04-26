@@ -9,11 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.love_cookies.e_office.ActivityCollections;
+import com.love_cookies.e_office.E_OfficeApplication;
 import com.love_cookies.e_office.Model.Bean.UserBean;
 import com.love_cookies.e_office.Presenter.MainPresenter;
 import com.love_cookies.e_office.R;
 import com.love_cookies.e_office.Utils.DateTimeUtil;
-import com.love_cookies.e_office.Utils.SPUtils;
 import com.love_cookies.e_office.Utils.ToastUtils;
 import com.love_cookies.e_office.View.Interface.IMainView;
 import com.love_cookies.e_office.View.Widget.MenuItemView;
@@ -63,6 +63,12 @@ public class MainActivity extends BaseActivity implements IMainView {
      */
     @Override
     public void initWidget(Bundle savedInstanceState) {
+
+        if (!(E_OfficeApplication.sp.getString("date", "1992-02-12")).contains(DateTimeUtil.getCurrentYear())) {
+            E_OfficeApplication.editor.putBoolean("sign_in", false);
+            E_OfficeApplication.editor.commit();
+        }
+
         titleTV.setText(R.string.app_name);
         rightBtn.setText(R.string.logout_btn_text);
         rightBtn.setOnClickListener(this);
@@ -78,7 +84,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    if (!(boolean) SPUtils.get(MainActivity.this, "sign_in", false)) {
+                    if (!E_OfficeApplication.sp.getBoolean("sign_in", false)) {
                         doSignIn();
                     }
                 } else {
@@ -86,7 +92,7 @@ public class MainActivity extends BaseActivity implements IMainView {
                 }
             }
         });
-        if ((boolean)SPUtils.get(MainActivity.this, "sign_in", false)) {
+        if (E_OfficeApplication.sp.getBoolean("sign_in", false)) {
             signBtn.setChecked(true);
             signBtn.setText(R.string.sign_out);
         }
@@ -156,8 +162,9 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void signInSuccess() {
         ToastUtils.show(this, R.string.sign_in_success_tip);
-        SPUtils.put(this, "sign_in", true);
-        SPUtils.put(this, "date", DateTimeUtil.getCurrentYear());
+        E_OfficeApplication.editor.putBoolean("sign_in", true);
+        E_OfficeApplication.editor.putString("date", DateTimeUtil.getCurrentYear());
+        E_OfficeApplication.editor.commit();
         signBtn.setText(R.string.sign_out);
     }
 
@@ -184,7 +191,8 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void signOutSuccess() {
         ToastUtils.show(this, R.string.sign_out_success_tip);
-        SPUtils.put(this, "sign_in", false);
+        E_OfficeApplication.editor.putBoolean("sign_in", false);
+        E_OfficeApplication.editor.commit();
         signBtn.setText(R.string.sign_in);
     }
 
