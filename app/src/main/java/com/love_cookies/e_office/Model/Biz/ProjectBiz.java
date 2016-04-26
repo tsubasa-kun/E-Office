@@ -1,14 +1,14 @@
 package com.love_cookies.e_office.Model.Biz;
 
-import com.love_cookies.e_office.ActivityCollections;
+import android.database.Cursor;
+
+import com.love_cookies.e_office.E_OfficeApplication;
 import com.love_cookies.e_office.Model.Bean.ProjectBean;
 import com.love_cookies.e_office.Model.Biz.Interface.IProjectBiz;
 import com.love_cookies.e_office.View.Interface.CallBack;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.listener.FindListener;
 
 /**
  * Created by xiekun on 2016/4/23.
@@ -23,19 +23,22 @@ public class ProjectBiz implements IProjectBiz {
      */
     @Override
     public void getProject(int offset, final CallBack callBack) {
-        BmobQuery<ProjectBean> query = new BmobQuery<>();
-        query.setLimit(10);
-        query.setSkip(10 * offset);
-        query.findObjects(ActivityCollections.getInstance().currentActivity(), new FindListener<ProjectBean>() {
-            @Override
-            public void onSuccess(List<ProjectBean> list) {
-                callBack.onSuccess(list);
+        try {
+            List<ProjectBean> result = new ArrayList<>();
+            ProjectBean projectBean;
+            String sql = "SELECT * FROM project LIMIT 10 OFFSET " + (offset * 10);
+            Cursor cursor = E_OfficeApplication.db.rawQuery(sql, null);
+            while (cursor.moveToNext()) {
+                projectBean = new ProjectBean();
+                projectBean.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                projectBean.setTitle(cursor.getString(cursor.getColumnIndex("title")));
+                projectBean.setContent(cursor.getString(cursor.getColumnIndex("content")));
+                result.add(projectBean);
             }
-
-            @Override
-            public void onError(int i, String s) {
-                callBack.onFailed(s);
-            }
-        });
+            cursor.close();
+            callBack.onSuccess(result);
+        } catch (Exception ex) {
+            callBack.onFailed(ex.getMessage());
+        }
     }
 }

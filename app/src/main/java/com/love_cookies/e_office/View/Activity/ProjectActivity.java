@@ -62,7 +62,7 @@ public class ProjectActivity extends BaseActivity implements IProjectView, LoadA
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
-                bundle.putString("project_id", datas.get(position).getObjectId());
+                bundle.putString("project_id", datas.get(position).getId() + "");
                 turn(ProjectDetailActivity.class, bundle);
             }
         });
