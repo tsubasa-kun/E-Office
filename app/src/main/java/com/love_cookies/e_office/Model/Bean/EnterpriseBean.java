@@ -3,17 +3,24 @@ package com.love_cookies.e_office.Model.Bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import cn.bmob.v3.BmobObject;
-
 /**
  * Created by xiekun on 2016/4/24.
  *
  * 企业动态实体类
  */
-public class EnterpriseBean extends BmobObject implements Parcelable {
+public class EnterpriseBean implements Parcelable {
+    private int id;
     private String title;
     private String time;
     private String content;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -39,6 +46,7 @@ public class EnterpriseBean extends BmobObject implements Parcelable {
         this.content = content;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -46,6 +54,7 @@ public class EnterpriseBean extends BmobObject implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
         dest.writeString(this.title);
         dest.writeString(this.time);
         dest.writeString(this.content);
@@ -55,12 +64,13 @@ public class EnterpriseBean extends BmobObject implements Parcelable {
     }
 
     protected EnterpriseBean(Parcel in) {
+        this.id = in.readInt();
         this.title = in.readString();
         this.time = in.readString();
         this.content = in.readString();
     }
 
-    public static final Parcelable.Creator<EnterpriseBean> CREATOR = new Parcelable.Creator<EnterpriseBean>() {
+    public static final Creator<EnterpriseBean> CREATOR = new Creator<EnterpriseBean>() {
         @Override
         public EnterpriseBean createFromParcel(Parcel source) {
             return new EnterpriseBean(source);
