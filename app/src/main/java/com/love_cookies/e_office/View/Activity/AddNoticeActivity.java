@@ -6,12 +6,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.love_cookies.e_office.E_OfficeApplication;
 import com.love_cookies.e_office.Event.AddNoticeEvent;
 import com.love_cookies.e_office.Presenter.AddNoticePresenter;
 import com.love_cookies.e_office.R;
-import com.love_cookies.e_office.Utils.ProgressUtils;
-import com.love_cookies.e_office.Utils.ToastUtils;
 import com.love_cookies.e_office.View.Interface.IAddNoticeView;
 
 import org.xutils.view.annotation.ContentView;
@@ -78,11 +78,11 @@ public class AddNoticeActivity extends BaseActivity implements IAddNoticeView {
         String title = noticeTitleET.getText().toString();
         String content = noticeContentET.getText().toString();
         if (TextUtils.isEmpty(title)) {
-            ToastUtils.show(this, R.string.notice_title_hint);
+            Toast.makeText(this, R.string.notice_title_hint, Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(content)) {
-            ToastUtils.show(this, R.string.notice_content_hint);
+            Toast.makeText(this, R.string.notice_content_hint, Toast.LENGTH_SHORT).show();
         } else {
-            ProgressUtils.showProgress(this, R.string.wait_text);
+            E_OfficeApplication.showProgress(this, R.string.wait_text);
             addNoticePresenter.addNotice(title, content);
         }
     }
@@ -92,8 +92,8 @@ public class AddNoticeActivity extends BaseActivity implements IAddNoticeView {
      */
     @Override
     public void addSuccess() {
-        ToastUtils.show(this, R.string.add_notice_success_tip);
-        ProgressUtils.hideProgress();
+        Toast.makeText(this, R.string.add_notice_success_tip, Toast.LENGTH_SHORT).show();
+        E_OfficeApplication.hideProgress();
         EventBus.getDefault().post(new AddNoticeEvent());
         finish();
     }
@@ -104,7 +104,7 @@ public class AddNoticeActivity extends BaseActivity implements IAddNoticeView {
      */
     @Override
     public void addFailed(String msg) {
-        ToastUtils.show(this, msg);
-        ProgressUtils.hideProgress();
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        E_OfficeApplication.hideProgress();
     }
 }

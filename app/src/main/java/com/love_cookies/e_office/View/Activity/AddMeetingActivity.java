@@ -6,13 +6,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.love_cookies.e_office.E_OfficeApplication;
 import com.love_cookies.e_office.Event.AddMeetingEvent;
 import com.love_cookies.e_office.Presenter.AddMeetingPresenter;
 import com.love_cookies.e_office.R;
 import com.love_cookies.e_office.Utils.DateTimeUtil;
-import com.love_cookies.e_office.Utils.ProgressUtils;
-import com.love_cookies.e_office.Utils.ToastUtils;
 import com.love_cookies.e_office.View.Interface.IAddMeetingView;
 import com.love_cookies.e_office.View.Widget.DateAndTimePicker;
 
@@ -86,11 +86,11 @@ public class AddMeetingActivity extends BaseActivity implements IAddMeetingView 
         String subject = meetingSubjectET.getText().toString();
         String time = meetingTimeTV.getText().toString();
         if (TextUtils.isEmpty(subject)) {
-            ToastUtils.show(this, R.string.meeting_subject_hint);
+            Toast.makeText(this, R.string.meeting_subject_hint, Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(time)) {
-            ToastUtils.show(this, R.string.meeting_time_hint);
+            Toast.makeText(this, R.string.meeting_time_hint, Toast.LENGTH_SHORT).show();
         } else {
-            ProgressUtils.showProgress(this, R.string.wait_text);
+            E_OfficeApplication.showProgress(this, R.string.wait_text);
             addMeetingPresenter.addMeeting(subject, time);
         }
     }
@@ -100,8 +100,8 @@ public class AddMeetingActivity extends BaseActivity implements IAddMeetingView 
      */
     @Override
     public void addSuccess() {
-        ToastUtils.show(this, R.string.add_meeting_success_tip);
-        ProgressUtils.hideProgress();
+        Toast.makeText(this, R.string.add_meeting_success_tip, Toast.LENGTH_SHORT).show();
+        E_OfficeApplication.hideProgress();
         EventBus.getDefault().post(new AddMeetingEvent());
         finish();
     }
@@ -112,7 +112,7 @@ public class AddMeetingActivity extends BaseActivity implements IAddMeetingView 
      */
     @Override
     public void addFailed(String msg) {
-        ToastUtils.show(this, msg);
-        ProgressUtils.hideProgress();
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        E_OfficeApplication.hideProgress();
     }
 }

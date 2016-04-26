@@ -5,11 +5,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.love_cookies.e_office.E_OfficeApplication;
 import com.love_cookies.e_office.Presenter.LoginPresenter;
 import com.love_cookies.e_office.R;
-import com.love_cookies.e_office.Utils.ProgressUtils;
-import com.love_cookies.e_office.Utils.ToastUtils;
 import com.love_cookies.e_office.View.Interface.ILoginView;
 
 import org.xutils.view.annotation.ContentView;
@@ -73,11 +73,11 @@ public class LoginActivity extends BaseActivity implements ILoginView{
         String username = usernameET.getText().toString();
         String password = passwordET.getText().toString();
         if (TextUtils.isEmpty(username)) {
-            ToastUtils.show(this, R.string.username_text_hint);
+            Toast.makeText(this, R.string.username_text_hint, Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(password)) {
-            ToastUtils.show(this, R.string.password_text_hint);
+            Toast.makeText(this, R.string.password_text_hint, Toast.LENGTH_SHORT).show();
         } else {
-            ProgressUtils.showProgress(this, R.string.wait_text);
+            E_OfficeApplication.showProgress(this, R.string.wait_text);
             loginPresenter.doLogin(username, password);
         }
     }
@@ -87,7 +87,7 @@ public class LoginActivity extends BaseActivity implements ILoginView{
      */
     @Override
     public void turnToMain() {
-        ProgressUtils.hideProgress();
+        E_OfficeApplication.hideProgress();
         turnThenFinish(MainActivity.class);
     }
 
@@ -97,8 +97,8 @@ public class LoginActivity extends BaseActivity implements ILoginView{
      */
     @Override
     public void loginFailed(String msg) {
-        ProgressUtils.hideProgress();
-        ToastUtils.show(this, msg);
+        E_OfficeApplication.hideProgress();
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     /**

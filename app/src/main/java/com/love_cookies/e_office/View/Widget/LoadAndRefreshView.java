@@ -17,7 +17,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.love_cookies.e_office.R;
-import com.love_cookies.e_office.Utils.ToastUtils;
 
 
 /**
@@ -557,16 +556,6 @@ public class LoadAndRefreshView extends LinearLayout {
 		mHeaderTextView.setText(R.string.pull_to_refresh_pull_label);
 		mHeaderProgressBar.setVisibility(View.GONE);
 		mHeaderState = PULL_TO_REFRESH;
-	}
-
-	/**
-	 * 设置加载数据的结果
-	 * @param size
-	 */
-	public void setResultSize(int size){
-		if(size == 0){
-			ToastUtils.show(getContext(), R.string.pull_to_refresh_nodate);
-		}
 	}
 
 	/**

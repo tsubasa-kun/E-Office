@@ -7,6 +7,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.love_cookies.e_office.ActivityCollections;
 import com.love_cookies.e_office.E_OfficeApplication;
@@ -14,7 +15,6 @@ import com.love_cookies.e_office.Model.Bean.UserBean;
 import com.love_cookies.e_office.Presenter.MainPresenter;
 import com.love_cookies.e_office.R;
 import com.love_cookies.e_office.Utils.DateTimeUtil;
-import com.love_cookies.e_office.Utils.ToastUtils;
 import com.love_cookies.e_office.View.Interface.IMainView;
 import com.love_cookies.e_office.View.Widget.MenuItemView;
 
@@ -161,7 +161,7 @@ public class MainActivity extends BaseActivity implements IMainView {
      */
     @Override
     public void signInSuccess() {
-        ToastUtils.show(this, R.string.sign_in_success_tip);
+        Toast.makeText(this, R.string.sign_in_success_tip, Toast.LENGTH_SHORT).show();
         E_OfficeApplication.editor.putBoolean("sign_in", true);
         E_OfficeApplication.editor.putString("date", DateTimeUtil.getCurrentYear());
         E_OfficeApplication.editor.commit();
@@ -173,7 +173,7 @@ public class MainActivity extends BaseActivity implements IMainView {
      */
     @Override
     public void signInFailed() {
-        ToastUtils.show(this, R.string.sign_in_failed_tip);
+        Toast.makeText(this, R.string.sign_in_failed_tip, Toast.LENGTH_SHORT).show();
         signBtn.setText(R.string.sign_in);
     }
 
@@ -190,7 +190,7 @@ public class MainActivity extends BaseActivity implements IMainView {
      */
     @Override
     public void signOutSuccess() {
-        ToastUtils.show(this, R.string.sign_out_success_tip);
+        Toast.makeText(this, R.string.sign_out_success_tip, Toast.LENGTH_SHORT).show();
         E_OfficeApplication.editor.putBoolean("sign_in", false);
         E_OfficeApplication.editor.commit();
         signBtn.setText(R.string.sign_in);
@@ -201,7 +201,7 @@ public class MainActivity extends BaseActivity implements IMainView {
      */
     @Override
     public void signOutFailed() {
-        ToastUtils.show(this, R.string.sign_out_failed_tip);
+        Toast.makeText(this, R.string.sign_out_failed_tip, Toast.LENGTH_SHORT).show();
         signBtn.setText(R.string.sign_out);
     }
 
@@ -233,7 +233,7 @@ public class MainActivity extends BaseActivity implements IMainView {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if ((System.currentTimeMillis() - exitTime) > 2000)
             {
-                ToastUtils.show(getApplicationContext(), R.string.exit_tip);
+                Toast.makeText(this, R.string.exit_tip, Toast.LENGTH_SHORT).show();
                 exitTime = System.currentTimeMillis();
             } else {
                 ActivityCollections.getInstance().finishAllActivity();

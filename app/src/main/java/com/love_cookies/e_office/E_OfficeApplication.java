@@ -1,6 +1,8 @@
 package com.love_cookies.e_office;
 
 import android.app.Application;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -28,10 +30,12 @@ public class E_OfficeApplication extends Application {
     public static final String DATABASE_PATH = "/data/data/com.love_cookies.e_office/databases";
     public static SQLiteDatabase db;
 
-    public static UserBean user;
-
     public static SharedPreferences sp;
     public static SharedPreferences.Editor editor;
+
+    public static ProgressDialog mDialog = null;
+
+    public static UserBean user;
 
     @Override
     public void onCreate() {
@@ -44,6 +48,9 @@ public class E_OfficeApplication extends Application {
         Bmob.initialize(this, AppConfig.APPID);
     }
 
+    /**
+     * 获取数据库
+     */
     public void getDB() {
         String databaseFilename = DATABASE_PATH + "/" + DATABASE_NAME;
         File dir = new File(DATABASE_PATH);
@@ -69,14 +76,56 @@ public class E_OfficeApplication extends Application {
         db = SQLiteDatabase.openOrCreateDatabase(databaseFilename, null);
     }
 
+    /**
+     * 获取SharedPreferences
+     */
     public void getSP() {
         sp = getSharedPreferences("data", MODE_PRIVATE);
     }
 
+    /**
+     * 获取SharedPreferences.editor
+     */
     public void getSPEditor() {
         editor = getSharedPreferences("data", MODE_PRIVATE).edit();
     }
 
+    /**
+     * 显示加载窗
+     * @param context
+     * @param textRes
+     */
+    public static void showProgress(Context context, int textRes) {
+        try {
+            if (mDialog == null) {
+                mDialog = new ProgressDialog(context);
+            }
+            mDialog.setCancelable(false);
+            mDialog.setMessage(context.getString(textRes));
+            mDialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 隐藏加载窗
+     */
+    public static void hideProgress() {
+        try {
+            if (mDialog != null) {
+                mDialog.dismiss();
+                mDialog = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 设置用户
+     * @param userBean
+     */
     public void setUser(UserBean userBean) {
         user = userBean;
     }
