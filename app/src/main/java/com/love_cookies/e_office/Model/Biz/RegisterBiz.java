@@ -1,11 +1,13 @@
 package com.love_cookies.e_office.Model.Biz;
 
-import com.love_cookies.e_office.ActivityCollections;
-import com.love_cookies.e_office.Model.Bean.UserBean;
-import com.love_cookies.e_office.Model.Biz.Interface.IRegisterBiz;
-import com.love_cookies.e_office.View.Interface.CallBack;
+import android.content.ContentValues;
+import android.database.Cursor;
 
-import cn.bmob.v3.listener.SaveListener;
+import com.love_cookies.e_office.ActivityCollections;
+import com.love_cookies.e_office.E_OfficeApplication;
+import com.love_cookies.e_office.Model.Biz.Interface.IRegisterBiz;
+import com.love_cookies.e_office.R;
+import com.love_cookies.e_office.View.Interface.CallBack;
 
 /**
  * Created by xiekun on 2016/4/4.
@@ -22,20 +24,22 @@ public class RegisterBiz implements IRegisterBiz {
      */
     @Override
     public void doRegister(String username, String password, String nickname, final CallBack callBack) {
-        final UserBean userBean = new UserBean();
-        userBean.setUsername(username);
-        userBean.setPassword(password);
-        userBean.setNickname(nickname);
-        userBean.signUp(ActivityCollections.getInstance().currentActivity(), new SaveListener() {
-            @Override
-            public void onSuccess() {
-                callBack.onSuccess(userBean);
+        try {
+            String sql = "SELECT * FROM user WHERE username = ?";
+            Cursor cursor = E_OfficeApplication.db.rawQuery(sql, new String[]{username});
+            if(cursor.moveToFirst()){
+                callBack.onFailed(ActivityCollections.getInstance().currentActivity().getResources().getString(R.string.re_account_exist));
+            } else {
+                ContentValues values = new ContentValues();
+                values.put("username", username);
+                values.put("password", password);
+                values.put("nickname", nickname);
+                E_OfficeApplication.db.insert("user", null, values);
+                callBack.onSuccess(0);
             }
-
-            @Override
-            public void onFailure(int i, String s) {
-                callBack.onFailed(s);
-            }
-        });
+            cursor.close();
+        } catch (Exception ex) {
+            callBack.onFailed(ex.getMessage());
+        }
     }
 }
