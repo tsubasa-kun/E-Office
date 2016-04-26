@@ -1,17 +1,24 @@
 package com.love_cookies.e_office.Model.Bean;
 
-import cn.bmob.v3.BmobObject;
-
 /**
  * Created by xiekun on 2016/4/21 0021.
  *
  * 通知实体类
  */
-public class NoticeBean extends BmobObject {
+public class NoticeBean {
+    private int id;
     private String nickname;
     private String title;
     private String time;
     private String content;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getContent() {
         return content;

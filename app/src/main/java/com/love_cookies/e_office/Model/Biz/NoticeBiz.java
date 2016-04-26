@@ -1,14 +1,14 @@
 package com.love_cookies.e_office.Model.Biz;
 
-import com.love_cookies.e_office.ActivityCollections;
+import android.database.Cursor;
+
+import com.love_cookies.e_office.E_OfficeApplication;
 import com.love_cookies.e_office.Model.Bean.NoticeBean;
 import com.love_cookies.e_office.Model.Biz.Interface.INoticeBiz;
 import com.love_cookies.e_office.View.Interface.CallBack;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.listener.FindListener;
 
 /**
  * Created by xiekun on 2016/4/21 0021.
@@ -23,20 +23,24 @@ public class NoticeBiz implements INoticeBiz {
      */
     @Override
     public void getNotice(int offset, final CallBack callBack) {
-        BmobQuery<NoticeBean> query = new BmobQuery<>();
-        query.setLimit(10);
-        query.setSkip(10 * offset);
-        query.order("-time");
-        query.findObjects(ActivityCollections.getInstance().currentActivity(), new FindListener<NoticeBean>() {
-            @Override
-            public void onSuccess(List<NoticeBean> list) {
-                callBack.onSuccess(list);
+        try {
+            List<NoticeBean> result = new ArrayList<>();
+            NoticeBean noticeBean;
+            String sql = "SELECT * FROM notice ORDER BY time DESC LIMIT 10 OFFSET " + (offset * 10);
+            Cursor cursor = E_OfficeApplication.db.rawQuery(sql, null);
+            while (cursor.moveToNext()) {
+                noticeBean = new NoticeBean();
+                noticeBean.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                noticeBean.setNickname(cursor.getString(cursor.getColumnIndex("nickname")));
+                noticeBean.setTitle(cursor.getString(cursor.getColumnIndex("title")));
+                noticeBean.setTime(cursor.getString(cursor.getColumnIndex("time")));
+                noticeBean.setContent(cursor.getString(cursor.getColumnIndex("content")));
+                result.add(noticeBean);
             }
-
-            @Override
-            public void onError(int i, String s) {
-                callBack.onFailed(s);
-            }
-        });
+            cursor.close();
+            callBack.onSuccess(result);
+        } catch (Exception ex) {
+            callBack.onFailed(ex.getMessage());
+        }
     }
 }
