@@ -1,13 +1,11 @@
 package com.love_cookies.e_office.Model.Biz;
 
-import com.love_cookies.e_office.ActivityCollections;
-import com.love_cookies.e_office.Model.Bean.MeetingBean;
-import com.love_cookies.e_office.Model.Bean.UserBean;
-import com.love_cookies.e_office.Model.Biz.Interface.IAddMeetingBiz;
-import com.love_cookies.e_office.View.Interface.CallBack;
+import android.content.ContentValues;
 
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.listener.SaveListener;
+import com.love_cookies.e_office.E_OfficeApplication;
+import com.love_cookies.e_office.Model.Biz.Interface.IAddMeetingBiz;
+import com.love_cookies.e_office.Utils.DateTimeUtils;
+import com.love_cookies.e_office.View.Interface.CallBack;
 
 /**
  * Created by xiekun on 2016/4/25.
@@ -23,21 +21,15 @@ public class AddMeetingBiz implements IAddMeetingBiz {
      */
     @Override
     public void addMeeting(String subject, String time, final CallBack callBack) {
-        UserBean userBean = BmobUser.getCurrentUser(ActivityCollections.getInstance().currentActivity(), UserBean.class);
-        MeetingBean meetingBean = new MeetingBean();
-        meetingBean.setSubject(subject);
-        meetingBean.setTime(time);
-        meetingBean.setNickname(userBean.getNickname());
-        meetingBean.save(ActivityCollections.getInstance().currentActivity(), new SaveListener() {
-            @Override
-            public void onSuccess() {
-                callBack.onSuccess(0);
-            }
-
-            @Override
-            public void onFailure(int i, String s) {
-                callBack.onFailed(s);
-            }
-        });
+        try {
+            ContentValues values = new ContentValues();
+            values.put("nickname", E_OfficeApplication.user.getNickname());
+            values.put("subject", subject);
+            values.put("time", DateTimeUtils.getCurrentTime());
+            E_OfficeApplication.db.insert("meeting", null, values);
+            callBack.onSuccess(0);
+        } catch (Exception ex) {
+            callBack.onFailed(ex.getMessage());
+        }
     }
 }

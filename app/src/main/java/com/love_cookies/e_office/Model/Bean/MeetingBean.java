@@ -1,16 +1,23 @@
 package com.love_cookies.e_office.Model.Bean;
 
-import cn.bmob.v3.BmobObject;
-
 /**
  * Created by xiekun on 2016/4/25 0025.
  *
  * 会议实体类
  */
-public class MeetingBean extends BmobObject {
+public class MeetingBean {
+    private int id;
     private String subject;
     private String time;
     private String nickname;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNickname() {
         return nickname;

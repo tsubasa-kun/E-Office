@@ -1,14 +1,14 @@
 package com.love_cookies.e_office.Model.Biz;
 
-import com.love_cookies.e_office.ActivityCollections;
+import android.database.Cursor;
+
+import com.love_cookies.e_office.E_OfficeApplication;
 import com.love_cookies.e_office.Model.Bean.MeetingBean;
 import com.love_cookies.e_office.Model.Biz.Interface.IMeetingBiz;
 import com.love_cookies.e_office.View.Interface.CallBack;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.listener.FindListener;
 
 /**
  * Created by xiekun on 2016/4/25.
@@ -23,20 +23,23 @@ public class MeetingBiz implements IMeetingBiz {
      */
     @Override
     public void getMeeting(int offset, final CallBack callBack) {
-        BmobQuery<MeetingBean> query = new BmobQuery<>();
-        query.setLimit(10);
-        query.setSkip(10 * offset);
-        query.order("-time");
-        query.findObjects(ActivityCollections.getInstance().currentActivity(), new FindListener<MeetingBean>() {
-            @Override
-            public void onSuccess(List<MeetingBean> list) {
-                callBack.onSuccess(list);
+        try {
+            List<MeetingBean> result = new ArrayList<>();
+            MeetingBean meetingBean;
+            String sql = "SELECT * FROM meeting ORDER BY time DESC LIMIT 10 OFFSET " + (offset * 10);
+            Cursor cursor = E_OfficeApplication.db.rawQuery(sql, null);
+            while (cursor.moveToNext()) {
+                meetingBean = new MeetingBean();
+                meetingBean.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                meetingBean.setSubject(cursor.getString(cursor.getColumnIndex("subject")));
+                meetingBean.setTime(cursor.getString(cursor.getColumnIndex("time")));
+                meetingBean.setNickname(cursor.getString(cursor.getColumnIndex("nickname")));
+                result.add(meetingBean);
             }
-
-            @Override
-            public void onError(int i, String s) {
-                callBack.onFailed(s);
-            }
-        });
+            cursor.close();
+            callBack.onSuccess(result);
+        } catch (Exception ex) {
+            callBack.onFailed(ex.getMessage());
+        }
     }
 }
