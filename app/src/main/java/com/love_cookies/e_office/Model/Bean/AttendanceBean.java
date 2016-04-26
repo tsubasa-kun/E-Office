@@ -1,16 +1,23 @@
 package com.love_cookies.e_office.Model.Bean;
 
-import cn.bmob.v3.BmobObject;
-
 /**
  * Created by xiekun on 2016/4/19 0019.
  *
  * 考勤实体类
  */
-public class AttendanceBean extends BmobObject {
-    private String username;
+public class AttendanceBean {
+    private int id;
+    private int user_id;
     private String sign_in;
     private String sign_out;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getSign_in() {
         return sign_in;
@@ -28,11 +35,11 @@ public class AttendanceBean extends BmobObject {
         this.sign_out = sign_out;
     }
 
-    public String getUsername() {
-        return username;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 }
