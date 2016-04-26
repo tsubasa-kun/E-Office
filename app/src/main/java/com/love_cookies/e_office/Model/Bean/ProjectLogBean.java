@@ -1,17 +1,24 @@
 package com.love_cookies.e_office.Model.Bean;
 
-import cn.bmob.v3.BmobObject;
-
 /**
  * Created by xiekun on 2016/4/23.
  *
  * 项目日志实体类
  */
-public class ProjectLogBean extends BmobObject{
+public class ProjectLogBean {
+    private int id;
     private String project_id;
     private String nickname;
     private String time;
     private String content;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNickname() {
         return nickname;

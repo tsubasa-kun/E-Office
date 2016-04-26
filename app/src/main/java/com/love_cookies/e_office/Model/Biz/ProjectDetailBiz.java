@@ -1,16 +1,15 @@
 package com.love_cookies.e_office.Model.Biz;
 
-import com.love_cookies.e_office.ActivityCollections;
+import android.database.Cursor;
+
+import com.love_cookies.e_office.E_OfficeApplication;
 import com.love_cookies.e_office.Model.Bean.ProjectBean;
 import com.love_cookies.e_office.Model.Bean.ProjectLogBean;
 import com.love_cookies.e_office.Model.Biz.Interface.IProjectDetailBiz;
 import com.love_cookies.e_office.View.Interface.CallBack;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.GetListener;
 
 /**
  * Created by xiekun on 2016/4/23.
@@ -25,18 +24,21 @@ public class ProjectDetailBiz implements IProjectDetailBiz {
      */
     @Override
     public void getProjectDetail(String project_id, final CallBack callBack) {
-        BmobQuery<ProjectBean> query = new BmobQuery<>();
-        query.getObject(ActivityCollections.getInstance().currentActivity(), project_id, new GetListener<ProjectBean>() {
-            @Override
-            public void onSuccess(ProjectBean projectBean) {
-                callBack.onSuccess(projectBean);
+        try {
+            ProjectBean projectBean = null;
+            String sql = "SELECT * FROM project WHERE id = ?";
+            Cursor cursor = E_OfficeApplication.db.rawQuery(sql, new String[]{project_id});
+            while (cursor.moveToNext()) {
+                projectBean = new ProjectBean();
+                projectBean.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                projectBean.setTitle(cursor.getString(cursor.getColumnIndex("title")));
+                projectBean.setContent(cursor.getString(cursor.getColumnIndex("content")));
             }
-
-            @Override
-            public void onFailure(int i, String s) {
-                callBack.onFailed(s);
-            }
-        });
+            cursor.close();
+            callBack.onSuccess(projectBean);
+        } catch (Exception ex) {
+            callBack.onFailed(ex.getMessage());
+        }
     }
 
     /**
@@ -47,21 +49,23 @@ public class ProjectDetailBiz implements IProjectDetailBiz {
      */
     @Override
     public void getProjectLog(String project_id, int offset, final CallBack callBack) {
-        BmobQuery<ProjectLogBean> query = new BmobQuery<>();
-        query.addWhereEqualTo("project_id", project_id);
-        query.setLimit(10);
-        query.setSkip(10 * offset);
-        query.order("-time");
-        query.findObjects(ActivityCollections.getInstance().currentActivity(), new FindListener<ProjectLogBean>() {
-            @Override
-            public void onSuccess(List<ProjectLogBean> list) {
-                callBack.onSuccess(list);
+        try {
+            List<ProjectLogBean> result = new ArrayList<>();
+            ProjectLogBean projectLogBean = null;
+            String sql = "SELECT * FROM project_log WHERE project_id = ? ORDER BY time DESC LIMIT 10 OFFSET " + (offset * 10);
+            Cursor cursor = E_OfficeApplication.db.rawQuery(sql, new String[]{project_id});
+            while (cursor.moveToNext()) {
+                projectLogBean = new ProjectLogBean();
+                projectLogBean.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                projectLogBean.setNickname(cursor.getString(cursor.getColumnIndex("nickname")));
+                projectLogBean.setTime(cursor.getString(cursor.getColumnIndex("time")));
+                projectLogBean.setContent(cursor.getString(cursor.getColumnIndex("content")));
+                result.add(projectLogBean);
             }
-
-            @Override
-            public void onError(int i, String s) {
-                callBack.onFailed(s);
-            }
-        });
+            cursor.close();
+            callBack.onSuccess(result);
+        } catch (Exception ex) {
+            callBack.onFailed(ex.getMessage());
+        }
     }
 }
