@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.love_cookies.cookie_library.Activity.BaseActivity;
 import com.love_cookies.e_office.Model.Bean.OfficialBean;
 import com.love_cookies.e_office.R;
 

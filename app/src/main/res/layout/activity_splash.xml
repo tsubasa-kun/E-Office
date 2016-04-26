@@ -38,15 +38,4 @@
 
     </com.zhy.autolayout.AutoLinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="60px"
-        android:gravity="center"
-        android:padding="15px"
-        android:text="@string/app_right"
-        android:textColor="@color/white"
-        android:textSize="42px" />
-
 </com.zhy.autolayout.AutoRelativeLayout>

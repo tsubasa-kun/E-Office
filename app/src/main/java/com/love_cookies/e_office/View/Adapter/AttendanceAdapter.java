@@ -2,9 +2,6 @@ package com.love_cookies.e_office.View.Adapter;
 
 import android.content.Context;
 import android.text.TextUtils;
-
-import com.love_cookies.cookie_library.Adapter.CommonAdapter;
-import com.love_cookies.cookie_library.Adapter.CommonViewHolder;
 import com.love_cookies.e_office.Model.Bean.AttendanceBean;
 import com.love_cookies.e_office.R;
 

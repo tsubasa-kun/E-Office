@@ -1,9 +1,9 @@
 package com.love_cookies.e_office.Model.Biz;
 
-import com.love_cookies.cookie_library.Application.ActivityCollections;
-import com.love_cookies.cookie_library.Interface.CallBack;
+import com.love_cookies.e_office.ActivityCollections;
 import com.love_cookies.e_office.Model.Bean.OfficialBean;
 import com.love_cookies.e_office.Model.Biz.Interface.IOfficialBiz;
+import com.love_cookies.e_office.View.Interface.CallBack;
 
 import java.util.List;
 

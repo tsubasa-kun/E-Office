@@ -1,10 +1,10 @@
 package com.love_cookies.e_office.Model.Biz;
 
-import com.love_cookies.cookie_library.Application.ActivityCollections;
-import com.love_cookies.cookie_library.Interface.CallBack;
+import com.love_cookies.e_office.ActivityCollections;
 import com.love_cookies.e_office.Model.Bean.MeetingBean;
 import com.love_cookies.e_office.Model.Bean.UserBean;
 import com.love_cookies.e_office.Model.Biz.Interface.IAddMeetingBiz;
+import com.love_cookies.e_office.View.Interface.CallBack;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;

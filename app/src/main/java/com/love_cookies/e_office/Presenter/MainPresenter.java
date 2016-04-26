@@ -1,9 +1,9 @@
 package com.love_cookies.e_office.Presenter;
 
-import com.love_cookies.cookie_library.Application.ActivityCollections;
-import com.love_cookies.cookie_library.Interface.CallBack;
+import com.love_cookies.e_office.ActivityCollections;
 import com.love_cookies.e_office.Model.Bean.UserBean;
 import com.love_cookies.e_office.Model.Biz.AttendanceBiz;
+import com.love_cookies.e_office.View.Interface.CallBack;
 import com.love_cookies.e_office.View.Interface.IMainView;
 
 import cn.bmob.v3.BmobUser;

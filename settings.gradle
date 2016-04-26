@@ -1,1 +1,1 @@
-include ':app', ':cookie-library'
+include ':app'

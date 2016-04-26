@@ -9,7 +9,7 @@
 
     <include layout="@layout/view_title_bar" />
 
-    <com.love_cookies.cookie_library.Widget.LoadAndRefreshView
+    <com.love_cookies.e_office.View.Widget.LoadAndRefreshView
         android:id="@+id/load_and_refresh_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -65,7 +65,7 @@
 
                 </com.zhy.autolayout.AutoRelativeLayout>
 
-                <com.love_cookies.cookie_library.Widget.ListViewForScrollView
+                <com.love_cookies.e_office.View.Widget.ListViewForScrollView
                     android:id="@+id/project_log_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -79,6 +79,6 @@
 
         </ScrollView>
 
-    </com.love_cookies.cookie_library.Widget.LoadAndRefreshView>
+    </com.love_cookies.e_office.View.Widget.LoadAndRefreshView>
 
 </com.zhy.autolayout.AutoLinearLayout>

@@ -8,14 +8,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.love_cookies.cookie_library.Activity.BaseActivity;
-import com.love_cookies.cookie_library.Widget.LoadAndRefreshView;
 import com.love_cookies.e_office.Event.AddMeetingEvent;
 import com.love_cookies.e_office.Model.Bean.MeetingBean;
 import com.love_cookies.e_office.Presenter.MeetingPresenter;
 import com.love_cookies.e_office.R;
 import com.love_cookies.e_office.View.Adapter.MeetingAdapter;
 import com.love_cookies.e_office.View.Interface.IMeetingView;
+import com.love_cookies.e_office.View.Widget.LoadAndRefreshView;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;

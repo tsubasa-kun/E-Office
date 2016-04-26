@@ -6,11 +6,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.love_cookies.cookie_library.Activity.BaseActivity;
-import com.love_cookies.cookie_library.Utils.ProgressUtils;
-import com.love_cookies.cookie_library.Utils.ToastUtils;
 import com.love_cookies.e_office.Presenter.LoginPresenter;
 import com.love_cookies.e_office.R;
+import com.love_cookies.e_office.Utils.ProgressUtils;
+import com.love_cookies.e_office.Utils.ToastUtils;
 import com.love_cookies.e_office.View.Interface.ILoginView;
 
 import org.xutils.view.annotation.ContentView;

@@ -8,14 +8,13 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.love_cookies.cookie_library.Activity.BaseActivity;
-import com.love_cookies.cookie_library.Application.ActivityCollections;
-import com.love_cookies.cookie_library.Utils.SPUtils;
-import com.love_cookies.cookie_library.Utils.ToastUtils;
+import com.love_cookies.e_office.ActivityCollections;
 import com.love_cookies.e_office.Model.Bean.UserBean;
 import com.love_cookies.e_office.Presenter.MainPresenter;
 import com.love_cookies.e_office.R;
 import com.love_cookies.e_office.Utils.DateTimeUtil;
+import com.love_cookies.e_office.Utils.SPUtils;
+import com.love_cookies.e_office.Utils.ToastUtils;
 import com.love_cookies.e_office.View.Interface.IMainView;
 import com.love_cookies.e_office.View.Widget.MenuItemView;
 
@@ -79,7 +78,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    if (!(boolean)SPUtils.get(MainActivity.this, "sign_in", false)) {
+                    if (!(boolean) SPUtils.get(MainActivity.this, "sign_in", false)) {
                         doSignIn();
                     }
                 } else {

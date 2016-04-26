@@ -8,14 +8,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.love_cookies.cookie_library.Activity.BaseActivity;
-import com.love_cookies.cookie_library.Widget.LoadAndRefreshView;
 import com.love_cookies.e_office.Event.AddNoticeEvent;
 import com.love_cookies.e_office.Model.Bean.NoticeBean;
 import com.love_cookies.e_office.Presenter.NoticePresenter;
 import com.love_cookies.e_office.R;
 import com.love_cookies.e_office.View.Adapter.NoticeAdapter;
 import com.love_cookies.e_office.View.Interface.INoticeView;
+import com.love_cookies.e_office.View.Widget.LoadAndRefreshView;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;

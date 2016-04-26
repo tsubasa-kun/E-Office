@@ -7,7 +7,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.love_cookies.cookie_library.Activity.BaseActivity;
 import com.love_cookies.e_office.R;
 
 import org.xutils.image.ImageOptions;

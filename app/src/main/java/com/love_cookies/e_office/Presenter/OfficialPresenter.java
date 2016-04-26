@@ -1,8 +1,8 @@
 package com.love_cookies.e_office.Presenter;
 
-import com.love_cookies.cookie_library.Interface.CallBack;
 import com.love_cookies.e_office.Model.Bean.OfficialBean;
 import com.love_cookies.e_office.Model.Biz.OfficialBiz;
+import com.love_cookies.e_office.View.Interface.CallBack;
 import com.love_cookies.e_office.View.Interface.IOfficialView;
 
 import java.util.List;
