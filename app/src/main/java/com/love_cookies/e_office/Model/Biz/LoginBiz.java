@@ -28,6 +28,7 @@ public class LoginBiz implements ILoginBiz{
             Cursor cursor = E_OfficeApplication.db.rawQuery(sql, new String[]{username, password});
             if(cursor.moveToFirst()){
                 UserBean userBean = new UserBean();
+                userBean.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 userBean.setUsername(cursor.getString(cursor.getColumnIndex("username")));
                 userBean.setNickname(cursor.getString(cursor.getColumnIndex("nickname")));
                 callBack.onSuccess(userBean);
