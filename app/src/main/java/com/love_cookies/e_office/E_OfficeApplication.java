@@ -126,7 +126,7 @@ public class E_OfficeApplication extends Application {
      * 设置用户
      * @param userBean
      */
-    public void setUser(UserBean userBean) {
+    public static void setUser(UserBean userBean) {
         user = userBean;
     }
 }

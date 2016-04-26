@@ -1,12 +1,10 @@
 package com.love_cookies.e_office.Presenter;
 
-import com.love_cookies.e_office.ActivityCollections;
+import com.love_cookies.e_office.E_OfficeApplication;
 import com.love_cookies.e_office.Model.Bean.UserBean;
 import com.love_cookies.e_office.Model.Biz.AttendanceBiz;
 import com.love_cookies.e_office.View.Interface.CallBack;
 import com.love_cookies.e_office.View.Interface.IMainView;
-
-import cn.bmob.v3.BmobUser;
 
 /**
  * Created by xiekun on 2016/4/19 0019.
@@ -27,7 +25,7 @@ public class MainPresenter {
      * 获取用户
      */
     public void getUser() {
-        UserBean userBean = BmobUser.getCurrentUser(ActivityCollections.getInstance().currentActivity(), UserBean.class);
+        UserBean userBean = E_OfficeApplication.user;
         iMainView.setUser(userBean);
     }
 
@@ -69,8 +67,9 @@ public class MainPresenter {
      * 登出
      */
     public void doLogout() {
-        BmobUser.logOut(ActivityCollections.getInstance().currentActivity());//清除缓存用户对象
-        BmobUser.getCurrentUser(ActivityCollections.getInstance().currentActivity());//现在的currentUser是null了
+        E_OfficeApplication.setUser(null);
+        E_OfficeApplication.editor.clear();
+        E_OfficeApplication.editor.commit();
         iMainView.turnToLogin();
     }
 }

@@ -44,7 +44,9 @@ public class LoginActivity extends BaseActivity implements ILoginView{
         titleTV.setText(R.string.login_title);
         loginBtn.setOnClickListener(this);
         registerBtn.setOnClickListener(this);
-        autoLogin();
+        if(!TextUtils.isEmpty(E_OfficeApplication.sp.getString("username", ""))) {
+            autoLogin();
+        }
     }
 
     /**
@@ -106,6 +108,6 @@ public class LoginActivity extends BaseActivity implements ILoginView{
      */
     @Override
     public void autoLogin() {
-        loginPresenter.autoLogin();
+        loginPresenter.doLogin(E_OfficeApplication.sp.getString("username", ""), E_OfficeApplication.sp.getString("password", ""));
     }
 }

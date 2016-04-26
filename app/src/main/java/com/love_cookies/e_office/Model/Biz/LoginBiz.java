@@ -1,11 +1,13 @@
 package com.love_cookies.e_office.Model.Biz;
 
+import android.database.Cursor;
+
 import com.love_cookies.e_office.ActivityCollections;
+import com.love_cookies.e_office.E_OfficeApplication;
 import com.love_cookies.e_office.Model.Bean.UserBean;
 import com.love_cookies.e_office.Model.Biz.Interface.ILoginBiz;
+import com.love_cookies.e_office.R;
 import com.love_cookies.e_office.View.Interface.CallBack;
-
-import cn.bmob.v3.listener.SaveListener;
 
 /**
  * Created by xiekun on 2016/4/4.
@@ -21,19 +23,20 @@ public class LoginBiz implements ILoginBiz{
      */
     @Override
     public void doLogin(String username, String password, final CallBack callBack) {
-        final UserBean userBean = new UserBean();
-        userBean.setUsername(username);
-        userBean.setPassword(password);
-        userBean.login(ActivityCollections.getInstance().currentActivity(), new SaveListener() {
-            @Override
-            public void onSuccess() {
+        try {
+            String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+            Cursor cursor = E_OfficeApplication.db.rawQuery(sql, new String[]{username, password});
+            if(cursor.moveToFirst()){
+                UserBean userBean = new UserBean();
+                userBean.setUsername(cursor.getString(cursor.getColumnIndex("username")));
+                userBean.setNickname(cursor.getString(cursor.getColumnIndex("nickname")));
                 callBack.onSuccess(userBean);
+            } else {
+                callBack.onFailed(ActivityCollections.getInstance().currentActivity().getResources().getString(R.string.login_failed_text));
             }
-
-            @Override
-            public void onFailure(int i, String s) {
-                callBack.onFailed(s);
-            }
-        });
+            cursor.close();
+        } catch (Exception ex) {
+            callBack.onFailed(ex.getMessage());
+        }
     }
 }
