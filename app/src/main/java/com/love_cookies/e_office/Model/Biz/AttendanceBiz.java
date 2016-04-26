@@ -6,7 +6,7 @@ import com.love_cookies.e_office.ActivityCollections;
 import com.love_cookies.e_office.Model.Bean.AttendanceBean;
 import com.love_cookies.e_office.Model.Bean.UserBean;
 import com.love_cookies.e_office.Model.Biz.Interface.IAttendanceBiz;
-import com.love_cookies.e_office.Utils.DateTimeUtil;
+import com.love_cookies.e_office.Utils.DateTimeUtils;
 import com.love_cookies.e_office.View.Interface.CallBack;
 
 import java.util.List;
@@ -33,14 +33,14 @@ public class AttendanceBiz implements IAttendanceBiz{
         final UserBean userBean = BmobUser.getCurrentUser(context, UserBean.class);
         BmobQuery<AttendanceBean> query = new BmobQuery<>();
         query.addWhereEqualTo("username", userBean.getUsername());
-        query.addWhereContains("sign_in", DateTimeUtil.getCurrentYear());
+        query.addWhereContains("sign_in", DateTimeUtils.getCurrentYear());
         query.findObjects(context, new FindListener<AttendanceBean>() {
             @Override
             public void onSuccess(List<AttendanceBean> object) {
                 if (object != null && object.size() > 0) {
                     String objectId = object.get(0).getObjectId();
                     AttendanceBean attendanceBean = new AttendanceBean();
-                    attendanceBean.setSign_in(DateTimeUtil.getCurrentTime());
+                    attendanceBean.setSign_in(DateTimeUtils.getCurrentTime());
                     attendanceBean.update(context, objectId, new UpdateListener() {
                         @Override
                         public void onSuccess() {
@@ -54,7 +54,7 @@ public class AttendanceBiz implements IAttendanceBiz{
                 } else {
                     AttendanceBean attendanceBean = new AttendanceBean();
                     attendanceBean.setUsername(userBean.getUsername());
-                    attendanceBean.setSign_in(DateTimeUtil.getCurrentTime());
+                    attendanceBean.setSign_in(DateTimeUtils.getCurrentTime());
                     attendanceBean.save(context, new SaveListener() {
                         @Override
                         public void onSuccess() {
@@ -71,7 +71,7 @@ public class AttendanceBiz implements IAttendanceBiz{
             public void onError(int code, String msg) {
                 AttendanceBean attendanceBean = new AttendanceBean();
                 attendanceBean.setUsername(userBean.getUsername());
-                attendanceBean.setSign_in(DateTimeUtil.getCurrentTime());
+                attendanceBean.setSign_in(DateTimeUtils.getCurrentTime());
                 attendanceBean.save(context, new SaveListener() {
                     @Override
                     public void onSuccess() {
@@ -96,14 +96,14 @@ public class AttendanceBiz implements IAttendanceBiz{
         final UserBean userBean = BmobUser.getCurrentUser(context, UserBean.class);
         BmobQuery<AttendanceBean> query = new BmobQuery<AttendanceBean>();
         query.addWhereEqualTo("username", userBean.getUsername());
-        query.addWhereContains("sign_in", DateTimeUtil.getCurrentYear());
+        query.addWhereContains("sign_in", DateTimeUtils.getCurrentYear());
         query.findObjects(context, new FindListener<AttendanceBean>() {
             @Override
             public void onSuccess(List<AttendanceBean> object) {
                 if (object != null && object.size() > 0) {
                     String objectId = object.get(0).getObjectId();
                     AttendanceBean attendanceBean = new AttendanceBean();
-                    attendanceBean.setSign_out(DateTimeUtil.getCurrentTime());
+                    attendanceBean.setSign_out(DateTimeUtils.getCurrentTime());
                     attendanceBean.update(context, objectId, new UpdateListener() {
                         @Override
                         public void onSuccess() {
@@ -117,7 +117,7 @@ public class AttendanceBiz implements IAttendanceBiz{
                 } else {
                     AttendanceBean attendanceBean = new AttendanceBean();
                     attendanceBean.setUsername(userBean.getUsername());
-                    attendanceBean.setSign_out(DateTimeUtil.getCurrentTime());
+                    attendanceBean.setSign_out(DateTimeUtils.getCurrentTime());
                     attendanceBean.save(context, new SaveListener() {
                         @Override
                         public void onSuccess() {
@@ -134,7 +134,7 @@ public class AttendanceBiz implements IAttendanceBiz{
             public void onError(int code, String msg) {
                 AttendanceBean attendanceBean = new AttendanceBean();
                 attendanceBean.setUsername(userBean.getUsername());
-                attendanceBean.setSign_out(DateTimeUtil.getCurrentTime());
+                attendanceBean.setSign_out(DateTimeUtils.getCurrentTime());
                 attendanceBean.save(context, new SaveListener() {
                     @Override
                     public void onSuccess() {

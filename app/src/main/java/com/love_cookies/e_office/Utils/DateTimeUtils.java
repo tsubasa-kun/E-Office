@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
  *
  * 时间日期工具类
  */
-public class DateTimeUtil {
+public class DateTimeUtils {
 
     /**
      * 获取当前时间

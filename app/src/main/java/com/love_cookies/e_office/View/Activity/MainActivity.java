@@ -14,7 +14,7 @@ import com.love_cookies.e_office.E_OfficeApplication;
 import com.love_cookies.e_office.Model.Bean.UserBean;
 import com.love_cookies.e_office.Presenter.MainPresenter;
 import com.love_cookies.e_office.R;
-import com.love_cookies.e_office.Utils.DateTimeUtil;
+import com.love_cookies.e_office.Utils.DateTimeUtils;
 import com.love_cookies.e_office.View.Interface.IMainView;
 import com.love_cookies.e_office.View.Widget.MenuItemView;
 
@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     @Override
     public void initWidget(Bundle savedInstanceState) {
 
-        if (!(E_OfficeApplication.sp.getString("date", "1992-02-12")).contains(DateTimeUtil.getCurrentYear())) {
+        if (!(E_OfficeApplication.sp.getString("date", "1992-02-12")).contains(DateTimeUtils.getCurrentYear())) {
             E_OfficeApplication.editor.putBoolean("sign_in", false);
             E_OfficeApplication.editor.commit();
         }
@@ -163,7 +163,7 @@ public class MainActivity extends BaseActivity implements IMainView {
     public void signInSuccess() {
         Toast.makeText(this, R.string.sign_in_success_tip, Toast.LENGTH_SHORT).show();
         E_OfficeApplication.editor.putBoolean("sign_in", true);
-        E_OfficeApplication.editor.putString("date", DateTimeUtil.getCurrentYear());
+        E_OfficeApplication.editor.putString("date", DateTimeUtils.getCurrentYear());
         E_OfficeApplication.editor.commit();
         signBtn.setText(R.string.sign_out);
     }

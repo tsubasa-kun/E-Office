@@ -12,7 +12,7 @@ import com.love_cookies.e_office.E_OfficeApplication;
 import com.love_cookies.e_office.Event.AddMeetingEvent;
 import com.love_cookies.e_office.Presenter.AddMeetingPresenter;
 import com.love_cookies.e_office.R;
-import com.love_cookies.e_office.Utils.DateTimeUtil;
+import com.love_cookies.e_office.Utils.DateTimeUtils;
 import com.love_cookies.e_office.View.Interface.IAddMeetingView;
 import com.love_cookies.e_office.View.Widget.DateAndTimePicker;
 
@@ -67,7 +67,7 @@ public class AddMeetingActivity extends BaseActivity implements IAddMeetingView 
                 finish();
                 break;
             case R.id.meeting_time_tv:
-                DateAndTimePicker dateAndTimePicker = new DateAndTimePicker(this, DateTimeUtil.getCurrentTime());
+                DateAndTimePicker dateAndTimePicker = new DateAndTimePicker(this, DateTimeUtils.getCurrentTime());
                 dateAndTimePicker.dateTimePicKDialog(meetingTimeTV);
                 break;
             case R.id.right_btn:

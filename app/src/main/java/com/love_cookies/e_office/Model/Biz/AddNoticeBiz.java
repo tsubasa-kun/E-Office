@@ -4,7 +4,7 @@ import com.love_cookies.e_office.ActivityCollections;
 import com.love_cookies.e_office.Model.Bean.NoticeBean;
 import com.love_cookies.e_office.Model.Bean.UserBean;
 import com.love_cookies.e_office.Model.Biz.Interface.IAddNoticeBiz;
-import com.love_cookies.e_office.Utils.DateTimeUtil;
+import com.love_cookies.e_office.Utils.DateTimeUtils;
 import com.love_cookies.e_office.View.Interface.CallBack;
 
 import cn.bmob.v3.BmobUser;
@@ -28,7 +28,7 @@ public class AddNoticeBiz implements IAddNoticeBiz {
         NoticeBean noticeBean = new NoticeBean();
         noticeBean.setTitle(title);
         noticeBean.setNickname(userBean.getNickname());
-        noticeBean.setTime(DateTimeUtil.getCurrentTime());
+        noticeBean.setTime(DateTimeUtils.getCurrentTime());
         noticeBean.setContent(content);
         noticeBean.save(ActivityCollections.getInstance().currentActivity(), new SaveListener() {
             @Override
