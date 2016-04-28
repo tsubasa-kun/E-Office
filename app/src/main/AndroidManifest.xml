@@ -12,12 +12,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="design_width"
-            android:value="1080" />
-        <meta-data
-            android:name="design_height"
-            android:value="1920" />
 
         <activity android:name=".View.Activity.SplashActivity">
             <intent-filter>
@@ -40,7 +34,7 @@
         <activity android:name=".View.Activity.EnterpriseDetailActivity" />
         <activity android:name=".View.Activity.AddNoticeActivity" />
         <activity android:name=".View.Activity.OfficialDetailActivity" />
-        <activity android:name=".View.Activity.AddMeetingActivity"></activity>
+        <activity android:name=".View.Activity.AddMeetingActivity" />
     </application>
 
 </manifest>
