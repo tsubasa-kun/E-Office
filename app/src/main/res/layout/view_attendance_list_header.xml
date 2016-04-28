@@ -16,7 +16,7 @@
         android:textSize="12sp" />
 
     <View
-        android:layout_width="1px"
+        android:layout_width="0.5dp"
         android:layout_height="match_parent"
         android:background="@color/theme_color" />
 
@@ -30,7 +30,7 @@
         android:textSize="12sp" />
 
     <View
-        android:layout_width="1px"
+        android:layout_width="0.5dp"
         android:layout_height="match_parent"
         android:background="@color/theme_color" />
 

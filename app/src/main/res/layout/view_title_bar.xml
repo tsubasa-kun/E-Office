@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120px"
+    android:layout_height="40dp"
     android:background="@color/theme_color"
-    android:padding="12px"
+    android:padding="4dp"
     android:orientation="horizontal"
     android:gravity="center_vertical">
 
     <ImageView
         android:id="@+id/left_btn"
-        android:layout_width="120px"
-        android:layout_height="120px"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:scaleType="centerCrop"/>
 
     <TextView
@@ -20,15 +20,15 @@
         android:layout_weight="1"
         android:gravity="center"
         android:textColor="@color/white"
-        android:textSize="54px"
+        android:textSize="18sp"
         android:singleLine="true"/>
 
     <TextView
         android:id="@+id/right_btn"
-        android:layout_width="120px"
-        android:layout_height="120px"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:gravity="center"
         android:textColor="@color/white"
-        android:textSize="42px"/>
+        android:textSize="14sp"/>
 
-</com.zhy.autolayout.AutoLinearLayout>
+</LinearLayout>

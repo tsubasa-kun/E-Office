@@ -11,15 +11,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60px"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        android:padding="30px">
+        android:padding="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="42px"
+            android:textSize="14sp"
             android:text="@string/username_text"/>
 
         <EditText
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/black"
-            android:textSize="42px"
+            android:textSize="14sp"
             android:hint="@string/username_text_hint"
             android:maxLength="16"/>
 
@@ -38,13 +38,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="30px">
+        android:padding="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="42px"
+            android:textSize="14sp"
             android:text="@string/password_text"/>
 
         <EditText
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/black"
-            android:textSize="42px"
+            android:textSize="14sp"
             android:hint="@string/password_text_hint"
             android:maxLength="16"
             android:inputType="textPassword"/>
@@ -64,13 +64,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="30px">
+        android:padding="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="42px"
+            android:textSize="14sp"
             android:text="@string/nickname_text"/>
 
         <EditText
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/black"
-            android:textSize="42px"
+            android:textSize="14sp"
             android:hint="@string/nickname_text_hint"
             android:maxLength="16"/>
 
@@ -89,7 +89,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="30px">
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/register_btn"
@@ -98,10 +98,10 @@
             android:layout_weight="1"
             android:background="@drawable/common_btn_bg"
             android:gravity="center"
-            android:padding="15px"
+            android:padding="5dp"
             android:text="@string/register_btn_text"
             android:textColor="@color/white"
-            android:textSize="54px" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 
