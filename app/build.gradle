@@ -27,15 +27,4 @@ dependencies {
     compile 'org.xutils:xutils:3.+'
     compile 'de.greenrobot:eventbus:2.+'
     compile 'com.google.code.gson:gson:2.+'
-    ////
-    //////Bmob-SDK相关
-    compile 'com.android.support:support-v4:23.2.1'
-    //用于兼容Android6.0系统，并提供权限管理工具
-    ////CDN文件服务使用okhttp相关包进行文件的上传和下载
-    compile 'com.squareup.okhttp:okhttp:2.+'
-    //okhttp
-    compile 'com.squareup.okio:okio:1.+'
-    //okio
-    ////
-    //////
 }

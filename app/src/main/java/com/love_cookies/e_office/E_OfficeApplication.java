@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.love_cookies.e_office.Config.AppConfig;
 import com.love_cookies.e_office.Model.Bean.UserBean;
 
 import org.xutils.x;
@@ -16,8 +15,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-import cn.bmob.v3.Bmob;
 
 /**
  * Created by xiekun on 2016/4/4.
@@ -45,7 +42,6 @@ public class E_OfficeApplication extends Application {
         getSPEditor();
         x.Ext.init(this);
         x.Ext.setDebug(true);
-        Bmob.initialize(this, AppConfig.APPID);
     }
 
     /**
