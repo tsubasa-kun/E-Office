@@ -1,5 +1,6 @@
 # E-Office
 ### 基于Android的移动办公APP
+（仅仅是一个简单的毕业设计）
 
 ## TODO List
 * 用户登录注册模块
