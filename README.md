@@ -26,5 +26,11 @@
 * 考勤管理模块
 	1. 查询考勤记录 √
 
-####PS
+#### PS
 临时罗列这些功能而已-_-
+
+### 截图
+![icon](http://ol3f7j63v.bkt.clouddn.com/app_icon.png)
+
+![0](http://ol3f7j63v.bkt.clouddn.com/office_00.png)
+![1](http://ol3f7j63v.bkt.clouddn.com/office_01.png)
